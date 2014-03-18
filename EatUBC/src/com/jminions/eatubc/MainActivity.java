@@ -1,5 +1,7 @@
 package com.jminions.eatubc;
 
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,22 +11,21 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+
+public class MainActivity extends Activity{
 	
 	//Intent intent = new Intent(this, DisplayOrderActivity.class);
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 
 	EditText order_line_1, order_line_2, order_line_3, order_line_4;
+	
+	
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		order_line_1 = (EditText) findViewById(R.id.editText1);
-		order_line_2 = (EditText) findViewById(R.id.editText2);
-		order_line_3 = (EditText) findViewById(R.id.editText3);
-		order_line_4 = (EditText) findViewById(R.id.editText4);
 		
 	}
 
@@ -37,9 +38,12 @@ public class MainActivity extends Activity {
 
 	public void onOrderClick(View view) {
 		
+		order_line_1 = (EditText) findViewById(R.id.editText1);
+		order_line_2 = (EditText) findViewById(R.id.editText2);
+		order_line_3 = (EditText) findViewById(R.id.editText3);
+		order_line_4 = (EditText) findViewById(R.id.editText4);
 		
-		
-		Intent intent = new Intent(this, DisplayOrderActivity.class);
+		Intent intent = new Intent(this, TabsInitActivity.class);
 		 
 		 
 		int quantity_1, quantity_2, quantity_3, quantity_4;
@@ -85,7 +89,7 @@ public class MainActivity extends Activity {
 		strb.append("Total Cost = " + total_price + "\n");
 		
 		String message = strb.toString();
-		intent.putExtra(EXTRA_MESSAGE, message);
+		//intent.putExtra(EXTRA_MESSAGE, message);
 		startActivity(intent);	 
 				
 		// Rather than writing to a pre-allocated field on the

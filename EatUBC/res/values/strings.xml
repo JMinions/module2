@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">EatUBC</string>
+    <string name="app_name">Eat!UBC</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="top_line">Stanley\'s Health Food Menu</string>
@@ -15,5 +15,12 @@
     <string name="button">Place Order</string>
     <string name="title_activity_display_order">Display Order</string>
     <string name="action_search">Search</string>
+    <string name="title_activity_tab1">Tab1</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_tab2">Tab2</string>
+    <string name="title_activity_tab3">Tab3</string>
+    <string name="title_activity_tabs_init">TabsInitActivity</string>
 
 </resources>

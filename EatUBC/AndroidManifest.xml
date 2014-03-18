@@ -22,7 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name="com.jminions.eatubc.DisplayOrderActivity"
             android:label="@string/title_activity_display_order"
@@ -31,7 +30,38 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />
         </activity>
-        
-     </application>
+        <activity
+            android:name="com.jminions.eatubc.Tab1"
+            android:label="@string/title_activity_tab1"
+            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jminions.eatubc.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.jminions.eatubc.Tab2"
+            android:label="@string/title_activity_tab2"
+            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jminions.eatubc.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.jminions.eatubc.Tab3"
+            android:label="@string/title_activity_tab3"
+            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jminions.eatubc.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.jminions.eatubc.TabsInitActivity"
+            android:label="@string/title_activity_tabs_init"
+            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jminions.eatubc.MainActivity" />
+        </activity>
+    </application>
 
 </manifest>

@@ -21,6 +21,10 @@
     <string name="title_section3">Section 3</string>
     <string name="title_activity_tab2">Tab2</string>
     <string name="title_activity_tab3">Tab3</string>
-    <string name="title_activity_tabs_init">TabsInitActivity</string>
+    <string name="title_activity_tabs_init">Order Now</string>
+    <string name="FoodOption">Food</string>
+    <string name="DrinkOption">Drink</string>
+    <string name="title_activity_food_menu">FoodMenuActivity</string>
+    <string name="title_activity_drink_menu">DrinkMenuActivity</string>
 
 </resources>

@@ -4,18 +4,18 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.ActionBar.Tab;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
-
+	
+	public static int[] order = new int[20];
+	
 	private ViewPager viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
@@ -43,7 +43,7 @@ public class TabsInitActivity extends FragmentActivity implements
 			actionBar.addTab(actionBar.newTab().setText(tab_name)
 					.setTabListener(this));
 		}
-
+		
 		/**
 		 * on swiping the viewpager make respective tab selected
 		 * */
@@ -113,12 +113,6 @@ public class TabsInitActivity extends FragmentActivity implements
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-	
-	public void foodMenu(View view) {
-		Intent intent = new Intent(this, FoodMenuActivity.class);
-		startActivity(intent);	
-		
 	}
 
 }

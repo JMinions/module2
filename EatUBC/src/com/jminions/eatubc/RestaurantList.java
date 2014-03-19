@@ -11,21 +11,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
-public class MainActivity extends Activity{
+public class RestaurantList extends Activity{
 	
-	//Intent intent = new Intent(this, DisplayOrderActivity.class);
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
-
-	EditText order_line_1, order_line_2, order_line_3, order_line_4;
-	
-	
-
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.restaurant_list);
 		
 	}
 
@@ -35,13 +28,9 @@ public class MainActivity extends Activity{
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
-	public void OnOrderClick(View view) {
-		
-		Intent intent = new Intent(this, RestaurantList.class);
-		startActivity(intent);	 
-
+	
+	public void PitPubClick(View view){
+		Intent Tabs_Init_Activity = new Intent(this, TabsInitActivity.class);
+		startActivity(Tabs_Init_Activity);
 	}
-
 }
-

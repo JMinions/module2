@@ -1,6 +1,6 @@
 package com.jminions.eatubc;
 
-import com.jminions.eatubc.R;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,4 +17,6 @@ public class Tab1 extends Fragment {
 		
 		return rootView;
 	}
+	
+	
 }

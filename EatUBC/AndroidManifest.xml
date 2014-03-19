@@ -62,6 +62,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />
         </activity>
+        <activity
+            android:name="com.jminions.eatubc.FoodMenuActivity"
+            android:label="@string/title_activity_food_menu"
+            android:parentActivityName="com.jminions.eatubc.TabInitActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jminions.eatubc.TabInitActivity" />
+        </activity>
+        <activity
+            android:name="com.jminions.eatubc.DrinkMenuActivity"
+            android:label="@string/title_activity_drink_menu"
+            android:parentActivityName="com.jminions.eatubc.TabsInitActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jminions.eatubc.TabsInitActivity" />
+        </activity>
     </application>
 
 </manifest>

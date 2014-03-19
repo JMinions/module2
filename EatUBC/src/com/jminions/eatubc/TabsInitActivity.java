@@ -64,6 +64,7 @@ public class TabsInitActivity extends FragmentActivity implements
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
+			
 
 	}
 

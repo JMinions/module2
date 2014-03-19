@@ -31,6 +31,14 @@
                 android:value="com.jminions.eatubc.MainActivity" />
         </activity>
         <activity
+            android:name="com.jminions.eatubc.RestaurantList"
+            android:label="@string/title_restaurant_list"
+            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jminions.eatubc.MainActivity" />
+        </activity>
+        <activity
             android:name="com.jminions.eatubc.Tab1"
             android:label="@string/title_activity_tab1"
             android:parentActivityName="com.jminions.eatubc.MainActivity" >

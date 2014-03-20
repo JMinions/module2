@@ -8,4 +8,16 @@
     android:minWidth="10px"
     android:orientation="horizontal" >
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#555555"
+        android:minHeight="5dp"
+        android:minWidth="5dp"
+        android:soundEffectsEnabled="true"
+        android:text="Place Order"
+        android:onClick="PlaceOrderClick"
+        android:textStyle="bold" />
+
 </LinearLayout>

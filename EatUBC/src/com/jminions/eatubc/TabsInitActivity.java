@@ -42,7 +42,7 @@ public class TabsInitActivity extends FragmentActivity implements
 	private String[] tabs = { "Menu", "Meals", "Order" };
 	public static EditText[][] menu;
 
-	protected static double Price = 0;
+	protected static double Price = 0.00;
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -4,13 +4,25 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical" >
-    
-    <TextView android:layout_width="fill_parent"
+
+    <Button
+        android:id="@+id/placeorderbutton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Order"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
-    
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="146dp"
+        android:onClick="PlaceOrderClick"
+        android:text="Place Order" />
+
+    <LinearLayout
+        android:id="@+id/finalprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/placeorderbutton"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal" >
+
+    </LinearLayout>
 
 </RelativeLayout>

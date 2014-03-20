@@ -2,8 +2,8 @@ package com.jminions.eatubc;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.app.ActionBar.Tab;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -12,16 +12,21 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
-
+	
+	public static double Price = 0;
+	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
+	public static int[] order = new int[20];
+	
 	private ViewPager viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
 	// Tab titles
 	private String[] tabs = { "Menu", "Meals", "Order" };
-
+	public static EditText[][] menu;
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,7 @@ public class TabsInitActivity extends FragmentActivity implements
 			actionBar.addTab(actionBar.newTab().setText(tab_name)
 					.setTabListener(this));
 		}
-
+		
 		/**
 		 * on swiping the viewpager make respective tab selected
 		 * */
@@ -115,11 +120,10 @@ public class TabsInitActivity extends FragmentActivity implements
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	public void foodMenu(View view) {
-		Intent intent = new Intent(this, FoodMenuActivity.class);
-		startActivity(intent);	
-		
-	}
 
+	/*public void foodMenu(View view){
+		Intent Food_Menu_Activity = new Intent(this, FoodMenuActivity.class);
+		startActivity(Food_Menu_Activity);
+	} */
+	
 }

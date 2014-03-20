@@ -12,13 +12,13 @@ import android.widget.TextView;
 import android.app.ExpandableListActivity;
 
 public class Tab2 extends Fragment {
-	private static final String arrGroupElements[] = { "Item1", "Item2",
-			"Item3", "Item4", "Item5", "Item6", "Item7", "Item8", "Item9" };
+	private static final String arrGroupElements[] = { "Specials" }; 
+		//",Item2", "Item3", "Item4", "Item5", "Item6", "Item7", "Item8", "Item9" };
 	/**
 	 * strings for child elements
 	 */
 	private static final String arrChildElements[][] = {
-			{ "Details1 A", "Details1 B", "Details1 C" },
+			{ "None" }, //, "Details1 B", "Details1 C" },
 			{ "Details2 B", "Details2 C" }, { "Details3 C" },
 			{ "Details4 A", "Details4 B", "Details4 C" },
 			{ "Details5 A", "Details5 B", "Details5 C" },

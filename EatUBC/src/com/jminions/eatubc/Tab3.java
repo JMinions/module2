@@ -14,21 +14,23 @@ public class Tab3 extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		LinearLayout order_tab = new LinearLayout(getActivity());
+		order_tab.setOrientation(LinearLayout.VERTICAL);
 		int indexi = 0;
 		int indexj = 0;
-		for (indexj = 0; indexj< 3;indexj++ ){
-		for (indexi = 0; indexi< 2;indexi++ ){
-		if(TabsInitActivity.amountOrdered[indexi][indexj] != 0){
-			TextView temp = new TextView(getActivity());
-			temp.setText(TabsInitActivity.arrChildElements[indexi][indexj]);
-			order_tab.addView(temp);
-			temp.setWidth(100);
-		}
+		for (indexj = 0; indexj < 3; indexj++) {
+			for (indexi = 0; indexi < 2; indexi++) {
+				if (TabsInitActivity.amountOrdered[indexi][indexj] != 0) {
+					TextView temp = new TextView(getActivity());
+					temp.setText(TabsInitActivity.arrChildElements[indexi][indexj]);
+					order_tab.addView(temp);
+					temp.setWidth(100);
+				}
 			}
-		indexi = 0;
+			indexi = 0;
 		}
+		
 		TextView price = new TextView(getActivity());
-		price.setText(String.valueOf(TabsInitActivity.Price));
+		price.setText("Total Price: $" + String.valueOf(TabsInitActivity.Price));
 		order_tab.addView(price);
 		price.setWidth(100);
 		return order_tab;

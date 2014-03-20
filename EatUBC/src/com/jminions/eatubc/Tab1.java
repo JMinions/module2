@@ -15,7 +15,6 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 public class Tab1 extends Fragment {
-	//private static int amountOrdered[][];
 	
 
 	@Override
@@ -58,34 +57,43 @@ public class Tab1 extends Fragment {
 				convertView = inflater.inflate(
 						R.layout.article_list_child_item_layout, null);
 			}
-		
-			//LinearLayout test = (LinearLayout) findViewById(R.id.LinearLayout1);
+
+			// LinearLayout test = (LinearLayout)
+			// findViewById(R.id.LinearLayout1);
 			final TextView yourSelection = (TextView) convertView
 					.findViewById(R.id.articleContentTextView);
 			yourSelection
 					.setText(TabsInitActivity.arrChildElements[groupPosition][childPosition]);
 			Button button = (Button) convertView.findViewById(R.id.button1);
-			button.setOnClickListener(new OnClickListener(){
-				
-			public void onClick(View view){AlertDialog.Builder builder = new AlertDialog.Builder(myContext);
-			builder.setMessage(TabsInitActivity.arrChildElements[groupp][childp]);
-			builder.setPositiveButton("yes", 
-					new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id)
-				{ TabsInitActivity.amountOrdered[groupp][childp]=TabsInitActivity.amountOrdered[groupp][childp]+1;
-					TabsInitActivity.Price += TabsInitActivity.arrChildPrice[groupp][childp];
-					notifyDataSetChanged();}});
-			builder.setNegativeButton("No",
-                     new DialogInterface.OnClickListener() {
-                         public void onClick(DialogInterface dialog, int id) {
-                             dialog.cancel();
-                         }
-                     });
-			AlertDialog alertDialog = builder.create();
-			alertDialog.show();
-			
-	}});
-			//TabsInitActivity.menu[groupPosition][childPosition] = (EditText) convertView.findViewById(R.id.editText1);
+			button.setOnClickListener(new OnClickListener() {
+
+				public void onClick(View view) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(
+							myContext);
+					builder.setMessage(TabsInitActivity.arrChildElements[groupp][childp]);
+					builder.setPositiveButton("Confirm Order",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									TabsInitActivity.amountOrdered[groupp][childp] = TabsInitActivity.amountOrdered[groupp][childp] + 1;
+									TabsInitActivity.Price += TabsInitActivity.arrChildPrice[groupp][childp];
+									notifyDataSetChanged();
+								}
+							});
+					builder.setNegativeButton("Back",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									dialog.cancel();
+								}
+							});
+					AlertDialog alertDialog = builder.create();
+					alertDialog.show();
+
+				}
+			});
+			// TabsInitActivity.menu[groupPosition][childPosition] = (EditText)
+			// convertView.findViewById(R.id.editText1);
 			return convertView;
 		}
 

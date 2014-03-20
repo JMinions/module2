@@ -27,6 +27,10 @@ public class Tab3 extends Fragment {
 			}
 		indexi = 0;
 		}
+		TextView price = new TextView(getActivity());
+		price.setText(String.valueOf(TabsInitActivity.Price));
+		order_tab.addView(price);
+		price.setWidth(100);
 		return order_tab;
 	}
 }

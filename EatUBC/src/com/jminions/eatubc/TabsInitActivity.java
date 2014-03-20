@@ -19,18 +19,19 @@ public class TabsInitActivity extends FragmentActivity implements
 	
 	public static int amountOrdered[][]={{0,0,0},{0,0,0}};
 	
+	public static final double arrChildPrice[][] = {
+		{ 4.75, 5.50, 5.50 }, 
+		{1.50, 1.50, 1.50},
+	};
+	
 	public static final String arrGroupElements[] = { "Food", "Drink" };
 	/**
 	 * strings for child elements
 	 */
 	public static final String arrChildElements[][] = {
-			{ "Wednesday Special - Hamburger and fries", "Hamburger Deluxe",
-					"Cheeseburger Deluxe" },
-			{ "Mountain Dew Can", "Pepsi Can", "Rootbeer Can" },
-			{ "Details3 C" }, { "Details4 A", "Details4 B", "Details4 C" },
-			{ "Details5 A", "Details5 B", "Details5 C" },
-			{ "Details6 A", "Details6 B", "Details6 C" }, { "Details7" },
-			{ "Details8" }, { "Details9" } };
+			{ "Wednesday Special - Hamburger and fries \n $4.75", "Hamburger Deluxe \n $5.50",
+					"Cheeseburger Deluxe \n $5.50" },
+			{ "Mountain Dew Can \n $1.50", "Pepsi Can \n $1.50", "Rootbeer Can \n $1.50" }, };
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	public static int[] order = new int[20];
 	
@@ -40,6 +41,8 @@ public class TabsInitActivity extends FragmentActivity implements
 	// Tab titles
 	private String[] tabs = { "Menu", "Meals", "Order" };
 	public static EditText[][] menu;
+
+	protected static double Price = 0;
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

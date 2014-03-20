@@ -6,6 +6,6 @@
     android:background="#ffffff"
     android:minHeight="10px"
     android:minWidth="10px"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
 
 </LinearLayout>

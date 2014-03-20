@@ -17,7 +17,20 @@ import android.widget.EditText;
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 	
-	public static int amountOrdered[][];
+	public static int amountOrdered[][]={{0,0,0},{0,0,0}};
+	
+	public static final String arrGroupElements[] = { "Food", "Drink" };
+	/**
+	 * strings for child elements
+	 */
+	public static final String arrChildElements[][] = {
+			{ "Wednesday Special - Hamburger and fries", "Hamburger Deluxe",
+					"Cheeseburger Deluxe" },
+			{ "Mountain Dew Can", "Pepsi Can", "Rootbeer Can" },
+			{ "Details3 C" }, { "Details4 A", "Details4 B", "Details4 C" },
+			{ "Details5 A", "Details5 B", "Details5 C" },
+			{ "Details6 A", "Details6 B", "Details6 C" }, { "Details7" },
+			{ "Details8" }, { "Details9" } };
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	public static int[] order = new int[20];
 	

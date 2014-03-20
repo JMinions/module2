@@ -118,12 +118,12 @@ public class TabsInitActivity extends FragmentActivity implements
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void foodMenu(View view){
+	/*public void foodMenu(View view){
 		Intent Food_Menu_Activity = new Intent(this, FoodMenuActivity.class);
 		startActivity(Food_Menu_Activity);
 	}
 	public void drinkMenu(View view){
 		Intent Drink_Menu_Activity = new Intent(this, DrinkMenuActivity.class);
 		startActivity(Drink_Menu_Activity);
-	}
+	}*/
 }

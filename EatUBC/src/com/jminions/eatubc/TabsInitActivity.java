@@ -17,7 +17,7 @@ import android.widget.EditText;
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 	
-	public static int amountOrdered[][];
+	public static double Price = 0;
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	public static int[] order = new int[20];
 	

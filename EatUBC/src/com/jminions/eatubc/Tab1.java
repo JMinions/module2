@@ -24,11 +24,11 @@ public class Tab1 extends Fragment {
 			{ "Wednesday Special - Hamburger and fries", "Hamburger Deluxe",
 					"Cheeseburger Deluxe" },
 			{ "Mountain Dew Can", "Pepsi Can", "Rootbeer Can" },
-			{ "Details3 C" }, { "Details4 A", "Details4 B", "Details4 C" },
-			{ "Details5 A", "Details5 B", "Details5 C" },
-			{ "Details6 A", "Details6 B", "Details6 C" }, { "Details7" },
-			{ "Details8" }, { "Details9" } };
-
+			};
+	public static final double arrChildPrice[][] = {
+		{ 4.75, 5.50, 5.50 }, 
+		{1.50, 1.50, 1.50},
+	};
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -71,11 +71,9 @@ public class Tab1 extends Fragment {
 			}
 		
 			//LinearLayout test = (LinearLayout) findViewById(R.id.LinearLayout1);
-			final TextView yourSelection = (TextView) convertView
-					.findViewById(R.id.articleContentTextView);
-			yourSelection
-					.setText(arrChildElements[groupPosition][childPosition]);
-			Button button = (Button) convertView.findViewById(R.id.button1);
+			final TextView yourSelection = (TextView) convertView.findViewById(R.id.articleContentTextView);
+			yourSelection.setText(arrChildElements[groupPosition][childPosition]);
+			Button button = (Button) convertView.findViewById(R.id.placeorderbutton);
 			button.setOnClickListener(new OnClickListener(){
 				
 			public void onClick(View view){AlertDialog.Builder builder = new AlertDialog.Builder(myContext);
@@ -83,10 +81,15 @@ public class Tab1 extends Fragment {
 			 builder.setNegativeButton("No",
                      new DialogInterface.OnClickListener() {
                          public void onClick(DialogInterface dialog, int id) {
-                        	 TabsInitActivity.amountOrdered[groupp][childp]++;
+                        	 //TabsInitActivity.amountOrdered[groupp][childp]++;
                              dialog.cancel();
                          }
                      });
+			 builder.setPositiveButton("Confirm Order", new DialogInterface.OnClickListener(){
+				 public void onClick(DialogInterface dialog, int id) {
+					TabsInitActivity.Price += arrChildPrice[groupp][childp];
+				 }
+			 });
 			AlertDialog alertDialog = builder.create();
 			alertDialog.show();
 			

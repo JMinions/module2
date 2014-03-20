@@ -16,11 +16,11 @@ import android.widget.TextView;
 
 public class Tab1 extends Fragment {
 	//private static int amountOrdered[][];
-	private static final String arrGroupElements[] = { "Food", "Drink" };
+	//private static final String arrGroupElements[] = { "Food", "Drink" };
 	/**
 	 * strings for child elements
 	 */
-	public static final String arrChildElements[][] = {
+	/*public static final String arrChildElements[][] = {
 			{ "Wednesday Special - Hamburger and fries", "Hamburger Deluxe",
 					"Cheeseburger Deluxe" },
 			{ "Mountain Dew Can", "Pepsi Can", "Rootbeer Can" },
@@ -28,6 +28,7 @@ public class Tab1 extends Fragment {
 			{ "Details5 A", "Details5 B", "Details5 C" },
 			{ "Details6 A", "Details6 B", "Details6 C" }, { "Details7" },
 			{ "Details8" }, { "Details9" } };
+	*/
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,6 +64,8 @@ public class Tab1 extends Fragment {
 				boolean isLastChild, View convertView, ViewGroup parent) {
 			final int groupp = groupPosition;
 			final int childp = childPosition;
+			TabsInitActivity.groupPos = groupPosition;
+			TabsInitActivity.childPos = childPosition;
 			if (convertView == null) {
 				LayoutInflater inflater = (LayoutInflater) myContext
 						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -74,16 +77,17 @@ public class Tab1 extends Fragment {
 			final TextView yourSelection = (TextView) convertView
 					.findViewById(R.id.articleContentTextView);
 			yourSelection
-					.setText(arrChildElements[groupPosition][childPosition]);
+					.setText(TabsInitActivity.arrChildElements[groupPosition][childPosition]);
 			Button button = (Button) convertView.findViewById(R.id.button1);
 			button.setOnClickListener(new OnClickListener(){
 				
 			public void onClick(View view){AlertDialog.Builder builder = new AlertDialog.Builder(myContext);
-			builder.setMessage(arrChildElements[groupp][childp]);
+			builder.setMessage(TabsInitActivity.arrChildElements[groupp][childp]);
 			 builder.setNegativeButton("No",
                      new DialogInterface.OnClickListener() {
                          public void onClick(DialogInterface dialog, int id) {
-                        	 TabsInitActivity.amountOrdered[groupp][childp]++;
+                        	 //TabsInitActivity.amountOrdered[groupp][childp]++;
+                        	 TabsInitActivity.total++;
                              dialog.cancel();
                          }
                      });
@@ -97,7 +101,7 @@ public class Tab1 extends Fragment {
 
 		@Override
 		public int getChildrenCount(int groupPosition) {
-			return arrChildElements[groupPosition].length;
+			return TabsInitActivity.arrChildElements[groupPosition].length;
 		}
 
 		@Override
@@ -107,7 +111,7 @@ public class Tab1 extends Fragment {
 
 		@Override
 		public int getGroupCount() {
-			return arrGroupElements.length;
+			return TabsInitActivity.arrGroupElements.length;
 		}
 
 		@Override
@@ -126,7 +130,7 @@ public class Tab1 extends Fragment {
 			}
 			TextView groupName = (TextView) convertView
 					.findViewById(R.id.articleHeaderTextView);
-			groupName.setText(arrGroupElements[groupPosition]);
+			groupName.setText(TabsInitActivity.arrGroupElements[groupPosition]);
 			return convertView;
 		}
 

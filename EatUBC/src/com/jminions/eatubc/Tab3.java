@@ -23,16 +23,22 @@ public class Tab3 extends Fragment {
 			for (indexi = 0; indexi < 2; indexi++) {
 				if (TabsInitActivity.amountOrdered[indexi][indexj] != 0) {
 					TextView temp = new TextView(getActivity());
+					TextView amount = new TextView(getActivity());
 					temp.setText(TabsInitActivity.arrChildElements[indexi][indexj]);
+					amount.setText("Amount:" + TabsInitActivity.amountOrdered[indexi][indexj]
+							+ "\n-----------------------------------");
 					order_tab.addView(temp);
+					order_tab.addView(amount);
 					temp.setWidth(100);
+					amount.setWidth(100);
 				}
 			}
 			indexi = 0;
 		}
 		
 		TextView price = new TextView(getActivity());
-		price.setText("Total Price: $" + String.valueOf(TabsInitActivity.Price));
+		price.setText("Total Price: $" + String.valueOf(TabsInitActivity.Price
+				+ "\n-----------------------------------"));
 		order_tab.addView(price);
 		price.setWidth(100);
 		
@@ -47,6 +53,7 @@ public class Tab3 extends Fragment {
     				TabsInitActivity.amountOrdered[indexi][indexj] = 0;
     			}
         	}
+        	TabsInitActivity.Price = 0.00;
             }
          });
 		

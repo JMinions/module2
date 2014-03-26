@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Eat!UBC</string>
+    <string name="app_name">Eat! UBC</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="top_line">Stanley\'s Health Food Menu</string>

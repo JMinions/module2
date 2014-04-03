@@ -2,6 +2,22 @@ package com.jminions.eatubc;
 
 
 import android.app.Activity;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.app.Activity;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,6 +57,9 @@ public class MainActivity extends Activity{
 		startActivity(intent);	 
 
 	}
-
+	public void foodMenu(View view){
+		Intent Food_Menu_Activity = new Intent(this, FoodMenuActivity.class);
+		startActivity(Food_Menu_Activity);
+	} 
 }
 

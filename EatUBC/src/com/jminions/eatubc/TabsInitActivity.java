@@ -28,13 +28,14 @@ public class TabsInitActivity extends FragmentActivity implements
 	/**
 	 * strings for child elements
 	 */
-	public static final String arrChildElements[][] = {
+	public static String arrChildElements[][] = {
 			{ 	"Wednesday Special - Hamburger and fries \n $4.75", 
 				"Hamburger Deluxe \n $5.50",
 				"Cheeseburger Deluxe \n $5.50" },
 			{ 	"Mountain Dew Can \n $1.50", 
 				"Pepsi Can \n $1.50", 
 				"Rootbeer Can \n $1.50" }, };
+	
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	public static int[] order = new int[20];
 	

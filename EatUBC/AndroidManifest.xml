@@ -23,9 +23,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.jminions.eatubc.MainMenu"
+            android:label="@string/hello_world"
+            android:parentActivityName= "com.jminions.eatubc.MainActivity">
+         </activity>
+         
+        <activity
             android:name="com.jminions.eatubc.DisplayOrderActivity"
             android:label="@string/title_activity_display_order"
-            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />
@@ -33,7 +39,7 @@
         <activity
             android:name="com.jminions.eatubc.RestaurantList"
             android:label="@string/title_restaurant_list"
-            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />
@@ -41,7 +47,7 @@
         <activity
             android:name="com.jminions.eatubc.Tab1"
             android:label="@string/title_activity_tab1"
-            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />
@@ -49,7 +55,7 @@
         <activity
             android:name="com.jminions.eatubc.Tab2"
             android:label="@string/title_activity_tab2"
-            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />
@@ -57,7 +63,7 @@
         <activity
             android:name="com.jminions.eatubc.Tab3"
             android:label="@string/title_activity_tab3"
-            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />

@@ -1,46 +1,60 @@
 package com.jminions.eatubc;
 
-
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+public class MainActivity extends Activity {
 
-public class MainActivity extends Activity{
-	
-	//Intent intent = new Intent(this, DisplayOrderActivity.class);
-	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
+   private EditText  username=null;
+   private EditText  password=null;
+   private TextView attempts;
+   private Button login;
+   int counter = 3;
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+      username = (EditText)findViewById(R.id.editText1);
+      password = (EditText)findViewById(R.id.editText2);
+      attempts = (TextView)findViewById(R.id.textView5);
+      attempts.setText(Integer.toString(counter));
+      login = (Button)findViewById(R.id.button1);
+   }
 
-	EditText order_line_1, order_line_2, order_line_3, order_line_4;
-	
-	
-
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-				
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	public void OnOrderClick(View view) {
-		
-		Intent intent = new Intent(this, RestaurantList.class);
+   public void login(View view){
+      if(username.getText().toString().equals("admin") && 
+      password.getText().toString().equals("admin")){
+      Toast.makeText(getApplicationContext(), "Redirecting...", 
+      Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(this, MainMenu.class);
 		startActivity(intent);	 
+   }	
+   else{
+      Toast.makeText(getApplicationContext(), "Wrong Credentials",
+      Toast.LENGTH_SHORT).show();
+      attempts.setBackgroundColor(Color.RED);	
+      counter--;
+      attempts.setText(Integer.toString(counter));
+      if(counter==0){
+         login.setEnabled(false);
+      }
 
-	}
+   }
 
 }
+   @Override
+   public boolean onCreateOptionsMenu(Menu menu) {
+      // Inflate the menu; this adds items to the action bar if it is present.
+      getMenuInflater().inflate(R.menu.main, menu);
+      return true;
+   }
 
+}

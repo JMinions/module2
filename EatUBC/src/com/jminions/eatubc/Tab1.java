@@ -107,10 +107,11 @@ public class Tab1 extends Fragment {
 								public void onClick(DialogInterface dialog,
 										int id) {
 									TabsInitActivity.amountOrdered[groupp][childp] = select;
-									TabsInitActivity.Price = TabsInitActivity.arrChildPrice[groupp][childp]*select;
+									TabsInitActivity.Price += TabsInitActivity.arrChildPrice[groupp][childp]*select;
 									notifyDataSetChanged();
 								}
 							});
+				    
 					builder.setNegativeButton("Back",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,

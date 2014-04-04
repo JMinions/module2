@@ -1,5 +1,8 @@
 package com.jminions.eatubc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,8 +21,20 @@ public class MainActivity extends Activity {
    private TextView attempts;
    private Button login;
    int counter = 3;
+   
+  
+   Map accounts = new HashMap();
+ 
+   
    @Override
    protected void onCreate(Bundle savedInstanceState) {
+	   try{
+		   accounts.put("admin","admin");
+		   accounts.put("a","b");
+	   }catch(Exception e){
+			System.out.println(e.toString());
+
+	   }
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
       username = (EditText)findViewById(R.id.editText1);
@@ -30,8 +45,7 @@ public class MainActivity extends Activity {
    }
 
    public void login(View view){
-      if(username.getText().toString().equals("admin") && 
-      password.getText().toString().equals("admin")){
+      if(password.getText().toString().equals(accounts.get(username.getText().toString()))){
       Toast.makeText(getApplicationContext(), "Redirecting...", 
       Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(this, MainMenu.class);

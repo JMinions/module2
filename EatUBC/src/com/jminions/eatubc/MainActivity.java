@@ -25,6 +25,8 @@ public class MainActivity extends Activity {
 
    private EditText  username=null;
    private EditText  password=null;
+   private EditText  user;
+   private EditText  pass;
    private TextView attempts;
    private TextView newaccount;
    private Button login;
@@ -95,12 +97,12 @@ public class MainActivity extends Activity {
 		// We need to get the instance of the LayoutInflater 
 		LayoutInflater inflater = (LayoutInflater) MainActivity.this 
 		.getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
-		View layout = inflater.inflate(R.layout.register,(ViewGroup)
-
-		findViewById(R.id.popup_element)); 
+		View layout = inflater.inflate(R.layout.register,(ViewGroup)findViewById(R.id.popup_element)); 
+		user = (EditText)layout.findViewById(R.id.username);
+		pass = (EditText)layout.findViewById(R.id.password);
 		register = new PopupWindow(layout, 500, 500, true); 
 		register.showAtLocation(layout, Gravity.CENTER, 0, 0);
-
+		register.setFocusable(true);
 
 		} catch (Exception e) { 
 		e.printStackTrace(); 
@@ -108,16 +110,17 @@ public class MainActivity extends Activity {
    }
    public void dismiss(View view){
 	   try{
-		if(accounts.containsKey(username.getText().toString())){
+		if(accounts.containsKey(user.getText().toString())){
 			 Toast.makeText(getApplicationContext(), "That Username is already in use",
 				      Toast.LENGTH_SHORT).show();
 			register.dismiss();
 		}
-		accounts.put(username.getText().toString(),password.getText().toString());
+		accounts.put(user.getText().toString(),pass.getText().toString());
 		register.dismiss();
 	   }
 	   catch(Exception e){
 		   System.out.println(e.toString());
+		   
 	   }
 	}
 }

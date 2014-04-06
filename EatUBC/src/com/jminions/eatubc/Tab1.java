@@ -71,7 +71,7 @@ public class Tab1 extends Fragment {
 					.setText(TabsInitActivity.arrChildElements[groupPosition][childPosition]);
 			Button button = (Button) convertView.findViewById(R.id.button1);
 			button.setOnClickListener(new OnClickListener() {
-
+				
 				public void onClick(View view) {
 		
 					AlertDialog.Builder builder = new AlertDialog.Builder(

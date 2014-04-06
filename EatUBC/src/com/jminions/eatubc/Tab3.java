@@ -1,8 +1,15 @@
 package com.jminions.eatubc;
 
+import com.facebook.android.DialogError;
+import com.facebook.android.Facebook;
+import com.facebook.android.FacebookError;
+import com.facebook.android.Facebook.DialogListener;
+
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,6 +21,11 @@ import android.widget.TextView;
 public class Tab3 extends Fragment {
 	
 	StringBuilder strb = new StringBuilder("");
+	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
+	Button btnFbGetProfile;
+	Button btnPostToWall;
+	private static String APP_ID = "636751449730696"; // Replace with your App ID
+	private Facebook facebook = new Facebook(APP_ID);
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -62,9 +74,6 @@ public class Tab3 extends Fragment {
         	}
         	TabsInitActivity.Price = 0.00;
         	order_tab.removeView(price_tab);
-//        	order_tab.removeView(price);
-//        	order_tab.removeView(temp);
-//        	order_tab.removeView(amount);
         	//order_tab.removeAllViews();
         	order_tab.invalidate();
 
@@ -72,19 +81,50 @@ public class Tab3 extends Fragment {
          });
 		
 		
-		Button btn = new Button(getActivity()); 
-	    btn.setText("Place Order"); 
-	    order_tab.addView(btn); 
+	    Button btnPlace = new Button(getActivity());
+	    btnPlace.setText("Place Order"); 
+	    order_tab.addView(btnPlace);
+	    btnPlace.setOnClickListener(new Button.OnClickListener() {
+	    	public void onClick(View v)
+	    	{
+	    		 Intent intent = new Intent(getActivity(), FoodMenuActivity.class);
+	    		 String message = strb.toString();
+	    		 intent.putExtra(EXTRA_MESSAGE, message);
+	    		 startActivity(intent);
+	    	}
+	    });
+	    
 	    
 	    
 		return order_tab;
-	}
-	public void PlaceOrderClick(View view){
-		//Do this when user clicks Place Order Button
-		LinearLayout order_final = new LinearLayout(getActivity());
-		TextView final_order = new TextView(getActivity());
-		final_order.setText(strb);
-		order_final.addView(final_order);
+	
+}
+
+		/*LinearLayout order_tab = new LinearLayout(getActivity());
+		order_tab.addView(btnPostToWall);
+		btnPostToWall.setText("Post Your Order on Facebook!");
 		
+		btnPostToWall.setOnClickListener( new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				postToWall(strb.toString());
+			}
+		}
+		);*/
+		
+	public void postToWall(String message) {
+		//Facebook facebook = new Facebook(APP_ID);
+	    Bundle parameters = new Bundle();
+	    parameters.putString("message", message);
+	    parameters.putString("description", "topic share");
+	    try {
+			facebook.request("me");
+	        String response = facebook.request("me/feed", parameters, "POST");
+	        Log.d("Tests", "got response: " + response);
+	        
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
+
 }

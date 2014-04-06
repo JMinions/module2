@@ -19,6 +19,7 @@ public class MainActivity extends Activity{
 	EditText order_line_1, order_line_2, order_line_3, order_line_4;
 	
 	
+	
 
 	
 	@Override
@@ -37,7 +38,7 @@ public class MainActivity extends Activity{
 
 	public void OnOrderClick(View view) {
 		
-		Intent intent = new Intent(this, RestaurantList.class);
+		Intent intent = new Intent(this, FacebookLogin.class);
 		startActivity(intent);	 
 
 	}

@@ -6,6 +6,7 @@ import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
@@ -19,16 +20,16 @@ public class TabsInitActivity extends FragmentActivity implements
 	
 	public static int amountOrdered[][]={{0,0,0},{0,0,0}};
 	
-	public static final double arrChildPrice[][] = {
+	public static double arrChildPrice[][] = {
 		{ 4.75, 5.50, 5.50 }, 
 		{1.50, 1.50, 1.50},
 	};
 	
-	public static final String arrGroupElements[] = { "Food", "Drink" };
+	public static String arrGroupElements[] = { "Food", "Drink" };
 	/**
 	 * strings for child elements
 	 */
-	public static final String arrChildElements[][] = {
+	public static String arrChildElements[][] = {
 			{ 	"Wednesday Special - Hamburger and fries \n $4.75", 
 				"Hamburger Deluxe \n $5.50",
 				"Cheeseburger Deluxe \n $5.50" },
@@ -41,6 +42,10 @@ public class TabsInitActivity extends FragmentActivity implements
 	private ViewPager viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
+	
+	//Facebook implementation
+	private Fragment mainFragment;
+	
 	// Tab titles
 	private String[] tabs = { "Menu", "Special", "Place Order" };
 	public static EditText[][] menu;
@@ -48,12 +53,26 @@ public class TabsInitActivity extends FragmentActivity implements
 	protected static double Price = 0.00;
 	@SuppressLint("NewApi")
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs_init);
+		
+		if (savedInstanceState == null) {
+	        // Add the fragment on initial activity setup
+	        mainFragment = new Fragment();
+	        getSupportFragmentManager()
+	        .beginTransaction()
+	        .add(android.R.id.content, mainFragment)
+	        .commit();
+	    } else {
+	        // Or set the fragment from restored state info
+	        mainFragment = (Fragment) getSupportFragmentManager()
+	        .findFragmentById(android.R.id.content);
+	    }
+		
 		// Show the Up button in the action bar.
 		setupActionBar();
-		// Initilization
+		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());

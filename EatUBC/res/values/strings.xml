@@ -34,6 +34,8 @@
     <string name="restaurant1">PitPub Burger Bar</string>
     <string name="restaurant2">UBC Village McDonalds</string>
     <string name="title_restaurant_list">Restaurant List</string>
+    <string name="facebook_login">Facebook Login</string>
+    <string name="APP_ID">636751449730696</string>
 
 
 </resources>

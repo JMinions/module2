@@ -1,5 +1,11 @@
 package com.jminions.eatubc;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import com.facebook.android.AsyncFacebookRunner;
+import com.facebook.android.AsyncFacebookRunner.RequestListener;
 import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
 import com.facebook.android.FacebookError;
@@ -8,6 +14,7 @@ import com.facebook.android.Facebook.DialogListener;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,12 +27,14 @@ import android.widget.TextView;
 
 public class Tab3 extends Fragment {
 	
-	StringBuilder strb = new StringBuilder("");
+	static StringBuilder strb = new StringBuilder("");
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
-	Button btnFbGetProfile;
-	Button btnPostToWall;
+	//Button btnFbGetProfile;
+	//Button btnPostToWall;
+	public AsyncFacebookRunner mAsyncRunner;
 	private static String APP_ID = "636751449730696"; // Replace with your App ID
 	private Facebook facebook = new Facebook(APP_ID);
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -84,13 +93,29 @@ public class Tab3 extends Fragment {
 	    Button btnPlace = new Button(getActivity());
 	    btnPlace.setText("Place Order"); 
 	    order_tab.addView(btnPlace);
+	    
+	    final Button btnPostToWall = new Button(getActivity());
+	    order_tab.addView(btnPostToWall);
+	    btnPostToWall.setVisibility(View.INVISIBLE);
+	    
 	    btnPlace.setOnClickListener(new Button.OnClickListener() {
 	    	public void onClick(View v)
 	    	{
-	    		 Intent intent = new Intent(getActivity(), FoodMenuActivity.class);
+	    		 //Intent intent = new Intent(getActivity(), FacebookActions.class);
 	    		 String message = strb.toString();
-	    		 intent.putExtra(EXTRA_MESSAGE, message);
-	    		 startActivity(intent);
+	    		 //intent.putExtra(EXTRA_MESSAGE, message);
+	    		 //startActivity(intent);
+	    		 	btnPostToWall.setVisibility(View.VISIBLE);
+	    			btnPostToWall.setText("Post Your Order on Facebook!");
+	    			
+	    			btnPostToWall.setOnClickListener( new Button.OnClickListener() {
+	    				@Override
+	    				public void onClick(View v) {
+	    					postToWall(strb.toString());
+	    				}
+	    			}
+	    			);
+	    			
 	    	}
 	    });
 	    
@@ -99,32 +124,33 @@ public class Tab3 extends Fragment {
 		return order_tab;
 	
 }
+		
+	public void postToWall(final String message) {
+		facebook.dialog(getActivity(), "feed", new DialogListener() {
 
-		/*LinearLayout order_tab = new LinearLayout(getActivity());
-		order_tab.addView(btnPostToWall);
-		btnPostToWall.setText("Post Your Order on Facebook!");
-		
-		btnPostToWall.setOnClickListener( new Button.OnClickListener() {
 			@Override
-			public void onClick(View v) {
-				postToWall(strb.toString());
+			public void onFacebookError(FacebookError e) {
 			}
-		}
-		);*/
-		
-	public void postToWall(String message) {
-		//Facebook facebook = new Facebook(APP_ID);
-	    Bundle parameters = new Bundle();
-	    parameters.putString("message", message);
-	    parameters.putString("description", "topic share");
-	    try {
-			facebook.request("me");
-	        String response = facebook.request("me/feed", parameters, "POST");
-	        Log.d("Tests", "got response: " + response);
-	        
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+
+			@Override
+			public void onError(DialogError e) {
+			}
+
+			@Override
+			public void onComplete(Bundle values) {
+				values.putString("message", message);
+				//mAsyncRunner.request("me/feed", values,"POST",new mRequestListener(),null);
+			}
+
+			@Override
+			public void onCancel() {
+			}
+		});
 	}
+	
+	
+	
+	
+	
 
 }

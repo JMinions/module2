@@ -36,6 +36,10 @@
     <string name="title_restaurant_list">Restaurant List</string>
     <string name="facebook_login">Facebook Login</string>
     <string name="APP_ID">636751449730696</string>
+    
+       <string name="username">Username:</string>
+   <string name="password">Password:</string>
+   	<string name = "register">register</string>
 
 
 </resources>

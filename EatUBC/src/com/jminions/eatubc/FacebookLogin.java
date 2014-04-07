@@ -52,6 +52,7 @@ public class FacebookLogin extends Activity{
 	Button btnFbLogOut;
 	//Button btnShowAccessTokens;
 	TextView WelcomeString;
+	ImageView ImgFbLogin;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class FacebookLogin extends Activity{
 		setContentView(R.layout.facebook_login);
 
 		btnFbLogin = (Button) findViewById(R.id.btn_fblogin);
+		ImgFbLogin = (ImageView) findViewById(R.id.fblogin);
 		mAsyncRunner = new AsyncFacebookRunner(facebook);
 		WelcomeString = (TextView) findViewById(R.id.textView1);
 		btnFbLogOut = (Button) findViewById(R.id.btn_fb_logout);
@@ -71,30 +73,24 @@ public class FacebookLogin extends Activity{
 		/**
 		 * Login button Click event
 		 * */
-		btnFbLogin.setOnClickListener(new View.OnClickListener() {
+		ImgFbLogin.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				//getProfileInformation();
-				loginToFacebook();
+				LogInOrOutToFacebook();
 			}
 		});
 		
-		btnFbLogOut.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				logoutFromFacebook();
-			}
-		});
+		
 
 	}
 
 	/**
-	 * Function to login into facebook
+	 * Function to login or out to facebook
 	 * */
 	@SuppressWarnings("deprecation")
-		public void loginToFacebook() {
+		public void LogInOrOutToFacebook() {
 		
 			mPrefs = getPreferences(MODE_PRIVATE);
 			String access_token = mPrefs.getString("access_token", null);
@@ -105,8 +101,8 @@ public class FacebookLogin extends Activity{
 			}
 
 			if (!facebook.isSessionValid()) {
-				Intent intent = new Intent (this, RestaurantList.class);
-				startActivity(intent);
+				//Intent intent = new Intent (this, RestaurantList.class);
+				//startActivity(intent);
 				facebook.authorize(this,
 						new String[] { "email", "publish_stream","publish_actions", "manage_friendlists" },
 						new DialogListener() {
@@ -126,9 +122,9 @@ public class FacebookLogin extends Activity{
 								editor.putLong("access_expires",
 										facebook.getAccessExpires());
 								editor.commit();
-								btnFbLogOut.setVisibility(View.VISIBLE);
+								
 								getProfileInformation();
-								//btnFbLogin.setVisibility(View.INVISIBLE);
+								
 								
 							}
 
@@ -152,6 +148,19 @@ public class FacebookLogin extends Activity{
 					//getProfileInformation();
 				}
 			}
+			else {
+				try {
+					facebook.logout(getApplicationContext());
+					Toast.makeText(FacebookLogin.this, "isSessionValid in logout", Toast.LENGTH_SHORT).show();
+					ImgFbLogin.setImageResource(R.drawable.facebook_login_button);
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		
 		
 		
@@ -170,6 +179,9 @@ public class FacebookLogin extends Activity{
 	 * */
 	@SuppressWarnings("deprecation")
 	public void getProfileInformation() {
+		ImgFbLogin.setImageResource(R.drawable.facebook_logout_button);
+		Intent intent = new Intent (this, RestaurantList.class);
+		startActivity(intent);
 		mAsyncRunner.request("me", new RequestListener() {
 			@Override
 			public void onComplete(String response, Object state) {
@@ -247,51 +259,6 @@ public class FacebookLogin extends Activity{
 			}
 		});
 
-	}
-	/**
-	 * Function to Logout user from Facebook
-	 * */
-	@SuppressWarnings("deprecation")
-	public void logoutFromFacebook() {
-		mAsyncRunner.logout(this, new RequestListener() {
-			@Override
-			public void onComplete(String response, Object state) {
-				//Log.d("Logout from Facebook", response);
-				if (Boolean.parseBoolean(response) == true) {
-					runOnUiThread(new Runnable() {
-
-						@Override
-						public void run() {
-							// make Login button visible
-							btnFbLogin.setVisibility(View.VISIBLE);
-
-							// making all remaining buttons invisible
-							btnFbLogOut.setVisibility(View.INVISIBLE);
-						}
-
-					});
-
-				}
-			}
-
-			@Override
-			public void onIOException(IOException e, Object state) {
-			}
-
-			@Override
-			public void onFileNotFoundException(FileNotFoundException e,
-					Object state) {
-			}
-
-			@Override
-			public void onMalformedURLException(MalformedURLException e,
-					Object state) {
-			}
-
-			@Override
-			public void onFacebookError(FacebookError e, Object state) {
-			}
-		});
 	}
 	
 }

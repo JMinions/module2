@@ -1,5 +1,8 @@
 package com.jminions.eatubc;
 
+import java.util.Arrays;
+import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -11,8 +14,8 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -46,11 +49,30 @@ public class TabsInitActivity extends FragmentActivity implements
 	public static EditText[][] menu;
 
 	protected static double Price = 0.00;
+	
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs_init);
+		
+		Intent intent = getIntent();
+		String burgerBar = intent.getStringExtra(RestaurantList.EXTRA_MESSAGE);
+		System.out.println("TEST"+ burgerBar);
+		
+		List<String> burgerBarItems = Arrays.asList(burgerBar.split("\\s*,\\s*"));
+		
+		/*int count = 0;
+		for( int i = 0; i <= 1; i++ ) {
+			for (int j = 0; j <= 2; j++){
+				arrChildElements[i][j] = burgerBarItems.get(count) + "\n $" + burgerBarItems.get(++count);
+				count++;
+			}
+		}*/
+		
+		//arrChildElements[0][0] = burgerBarItems.get(0) + "\n $" + burgerBarItems.get(1);
+		//System.out.println(burgerBarItems.get(0));
+		
 		// Show the Up button in the action bar.
 		setupActionBar();
 		// Initilization
@@ -136,8 +158,16 @@ public class TabsInitActivity extends FragmentActivity implements
 			//
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
+		case R.id.action_refresh:
+			finish();
+			startActivity(getIntent());
+	        Toast updatedToast = Toast.makeText(getApplicationContext(), "Menu Updated!", Toast.LENGTH_SHORT);
+	        updatedToast.show();
+	        return true;
+	    default:
+        	return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
+		//return super.onOptionsItemSelected(item);
 	}
 
 	/*public void foodMenu(View view){

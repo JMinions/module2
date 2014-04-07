@@ -41,6 +41,11 @@ public class MainActivity extends Activity{
 		startActivity(intent);	 
 
 	}
+	
+	public void connectionClick(View view){
+		Intent connection = new Intent(this, FoodMenuActivity.class);
+		startActivity(connection);
+	}
 
 }
 

@@ -51,6 +51,7 @@ public class FoodMenuActivity extends Activity {
 		Timer tcp_timer = new Timer();
 		tcp_timer.schedule(tcp_task, 3000, 500);
 	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

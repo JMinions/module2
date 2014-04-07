@@ -71,11 +71,8 @@ public class Tab3 extends Fragment {
         	}
         	TabsInitActivity.Price = 0.00;
         	order_tab.removeView(price_tab);
-//        	order_tab.removeView(price);
-//        	order_tab.removeView(temp);
-//        	order_tab.removeView(amount);
-        	//order_tab.removeAllViews();
         	order_tab.invalidate();
+        	strb.setLength(0);
             }
          });
 

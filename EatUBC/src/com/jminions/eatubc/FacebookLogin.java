@@ -28,11 +28,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class FacebookLogin extends Activity{
 	
 	private static String APP_ID = "636751449730696";
+	
+	public static String Name;
+
+	public String Email;
+
+	static StringBuilder strb = new StringBuilder("");
 	
 	public Facebook facebook = new Facebook(APP_ID);
 	private AsyncFacebookRunner mAsyncRunner;
@@ -41,9 +48,10 @@ public class FacebookLogin extends Activity{
 
 	// Buttons
 	Button btnFbLogin;
-	Button btnFbGetProfile;
-	Button btnPostToWall;
-	Button btnShowAccessTokens;
+	//Button btnFbGetProfile;
+	Button btnFbLogOut;
+	//Button btnShowAccessTokens;
+	TextView WelcomeString;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,11 +59,15 @@ public class FacebookLogin extends Activity{
 		setContentView(R.layout.facebook_login);
 
 		btnFbLogin = (Button) findViewById(R.id.btn_fblogin);
-		btnFbGetProfile = (Button) findViewById(R.id.btn_get_profile);
-		btnPostToWall = (Button) findViewById(R.id.btn_fb_post_to_wall);
-		btnShowAccessTokens = (Button) findViewById(R.id.btn_show_access_tokens);
 		mAsyncRunner = new AsyncFacebookRunner(facebook);
-
+		WelcomeString = (TextView) findViewById(R.id.textView1);
+		btnFbLogOut = (Button) findViewById(R.id.btn_fb_logout);
+		
+		//getProfileInformation();
+		
+		
+		//WelcomeString.setText("Name: " + Name + "\n" + "Email: " + Email);
+		
 		/**
 		 * Login button Click event
 		 * */
@@ -63,41 +75,16 @@ public class FacebookLogin extends Activity{
 
 			@Override
 			public void onClick(View v) {
-				Log.d("Image Button", "button Clicked");
+				//getProfileInformation();
 				loginToFacebook();
 			}
 		});
-
-		/**
-		 * Getting facebook Profile info
-		 * */
-		btnFbGetProfile.setOnClickListener(new View.OnClickListener() {
-
+		
+		btnFbLogOut.setOnClickListener(new View.OnClickListener() {
+			
 			@Override
 			public void onClick(View v) {
-				getProfileInformation();
-			}
-		});
-
-		/**
-		 * Posting to Facebook Wall
-		 * */
-		btnPostToWall.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				postToWall();
-			}
-		});
-
-		/**
-		 * Showing Access Tokens
-		 * */
-		btnShowAccessTokens.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				showAccessTokens();
+				logoutFromFacebook();
 			}
 		});
 
@@ -107,82 +94,67 @@ public class FacebookLogin extends Activity{
 	 * Function to login into facebook
 	 * */
 	@SuppressWarnings("deprecation")
-	public void loginToFacebook() {
+		public void loginToFacebook() {
+		
+			mPrefs = getPreferences(MODE_PRIVATE);
+			String access_token = mPrefs.getString("access_token", null);
+			long expires = mPrefs.getLong("access_expires", 0);
 
-		mPrefs = getPreferences(MODE_PRIVATE);
-		String access_token = mPrefs.getString("access_token", null);
-		long expires = mPrefs.getLong("access_expires", 0);
+			if (access_token != null) {
+				facebook.setAccessToken(access_token);
+			}
 
-		if (access_token != null) {
-			facebook.setAccessToken(access_token);
-			Intent intent = new Intent(this, RestaurantList.class);
-			startActivity(intent);	
-			//btnFbLogin.setVisibility(View.INVISIBLE);
-			
-			// Making get profile button visible
-			//btnFbGetProfile.setVisibility(View.VISIBLE);
+			if (!facebook.isSessionValid()) {
+				Intent intent = new Intent (this, RestaurantList.class);
+				startActivity(intent);
+				facebook.authorize(this,
+						new String[] { "email", "publish_stream","publish_actions", "manage_friendlists" },
+						new DialogListener() {
 
-			// Making post to wall visible
-			//btnPostToWall.setVisibility(View.VISIBLE);
+							@Override
+							public void onCancel() {
+								// Function to handle cancel event
+							}
 
-			// Making show access tokens button visible
-			//btnShowAccessTokens.setVisibility(View.VISIBLE);
+							@Override
+							public void onComplete(Bundle values) {
+								// Function to handle complete event
+								// Edit Preferences and update facebook acess_token
+								SharedPreferences.Editor editor = mPrefs.edit();
+								editor.putString("access_token",
+										facebook.getAccessToken());
+								editor.putLong("access_expires",
+										facebook.getAccessExpires());
+								editor.commit();
+								btnFbLogOut.setVisibility(View.VISIBLE);
+								getProfileInformation();
+								//btnFbLogin.setVisibility(View.INVISIBLE);
+								
+							}
 
-			//Log.d("FB Sessions", "" + facebook.isSessionValid());
-		}
+							@Override
+							public void onError(DialogError error) {
+								// Function to handle error
 
-		if (expires != 0) {
-			facebook.setAccessExpires(expires);
-		}
+							}
 
-		if (!facebook.isSessionValid()) {
-			facebook.authorize(this,
-					new String[] { "email", "publish_stream", "manage_friendlists" },
-					new DialogListener() {
+							@Override
+							public void onFacebookError(FacebookError fberror) {
+								// Function to handle Facebook errors
 
-						@Override
-						public void onCancel() {
-							// Function to handle cancel event
+							}
 						}
-
-						@Override
-						public void onComplete(Bundle values) {
-							// Function to handle complete event
-							// Edit Preferences and update facebook acess_token
-							SharedPreferences.Editor editor = mPrefs.edit();
-							editor.putString("access_token",
-									facebook.getAccessToken());
-							editor.putLong("access_expires",
-									facebook.getAccessExpires());
-							editor.commit();
-
-							// Making Login button invisible
-							btnFbLogin.setVisibility(View.INVISIBLE);
-
-							// Making logout Button visible
-							btnFbGetProfile.setVisibility(View.VISIBLE);
-
-							// Making post to wall visible
-							btnPostToWall.setVisibility(View.VISIBLE);
-
-							// Making show access tokens button visible
-							btnShowAccessTokens.setVisibility(View.VISIBLE);
-						}
-
-						@Override
-						public void onError(DialogError error) {
-							// Function to handle error
-
-						}
-
-						@Override
-						public void onFacebookError(FacebookError fberror) {
-							// Function to handle Facebook errors
-
-						}
-
-					});
-		}
+				
+				);
+				
+				if (expires != 0) {
+					facebook.setAccessExpires(expires);
+					//getProfileInformation();
+				}
+			}
+		
+		
+		
 	}
 
 	@Override
@@ -191,7 +163,8 @@ public class FacebookLogin extends Activity{
 		facebook.authorizeCallback(requestCode, resultCode, data);
 	}
 
-
+	
+	
 	/**
 	 * Get Profile information by making request to Facebook Graph API
 	 * */
@@ -208,15 +181,17 @@ public class FacebookLogin extends Activity{
 					
 					// getting name of the user
 					final String name = profile.getString("name");
+					Name = name;
 					
 					// getting email of the user
 					final String email = profile.getString("email");
+					Email = email;
 					
 					runOnUiThread(new Runnable() {
 
 						@Override
 						public void run() {
-							Toast.makeText(getApplicationContext(), "Name: " + name + "\nEmail: " + email, Toast.LENGTH_LONG).show();
+							Toast.makeText(getApplicationContext(), "Name: " + Name + "\nEmail: " + Email, Toast.LENGTH_LONG).show();
 						}
 
 					});
@@ -273,17 +248,6 @@ public class FacebookLogin extends Activity{
 		});
 
 	}
-
-	/**
-	 * Function to show Access Tokens
-	 * */
-	public void showAccessTokens() {
-		String access_token = facebook.getAccessToken();
-
-		Toast.makeText(getApplicationContext(),
-				"Access Token: " + access_token, Toast.LENGTH_LONG).show();
-	}
-	
 	/**
 	 * Function to Logout user from Facebook
 	 * */
@@ -292,7 +256,7 @@ public class FacebookLogin extends Activity{
 		mAsyncRunner.logout(this, new RequestListener() {
 			@Override
 			public void onComplete(String response, Object state) {
-				Log.d("Logout from Facebook", response);
+				//Log.d("Logout from Facebook", response);
 				if (Boolean.parseBoolean(response) == true) {
 					runOnUiThread(new Runnable() {
 
@@ -302,9 +266,7 @@ public class FacebookLogin extends Activity{
 							btnFbLogin.setVisibility(View.VISIBLE);
 
 							// making all remaining buttons invisible
-							btnFbGetProfile.setVisibility(View.INVISIBLE);
-							btnPostToWall.setVisibility(View.INVISIBLE);
-							btnShowAccessTokens.setVisibility(View.INVISIBLE);
+							btnFbLogOut.setVisibility(View.INVISIBLE);
 						}
 
 					});

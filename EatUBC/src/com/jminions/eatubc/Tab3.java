@@ -65,7 +65,9 @@ public class Tab3 extends Fragment {
 		}
 		
 		final TextView price = new TextView(getActivity());
-		price.setText("Total Price: $" + String.valueOf(TabsInitActivity.Price
+		//price.setText("Thank You " + FacebookLogin.Name + "\n---------------------------------------" + "\n");
+		price.setText("Thank You " + FacebookLogin.Name + "\n---------------------------------------" + "\n" + 
+		"Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n-----------------------------------"));
 		price_tab.addView(price);
 		price.setWidth(100);
@@ -102,7 +104,9 @@ public class Tab3 extends Fragment {
 	    	public void onClick(View v)
 	    	{
 	    		 //Intent intent = new Intent(getActivity(), FacebookActions.class);
-	    		 String message = strb.toString();
+	    		
+	    		 //String message = strb.toString();
+	    		
 	    		 //intent.putExtra(EXTRA_MESSAGE, message);
 	    		 //startActivity(intent);
 	    		 	btnPostToWall.setVisibility(View.VISIBLE);
@@ -111,7 +115,7 @@ public class Tab3 extends Fragment {
 	    			btnPostToWall.setOnClickListener( new Button.OnClickListener() {
 	    				@Override
 	    				public void onClick(View v) {
-	    					postToWall(strb.toString());
+	    					postToWall("abcdefg test");
 	    				}
 	    			}
 	    			);

@@ -9,20 +9,20 @@
     <Button android:id="@+id/btn_fblogin"
         		android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
-        		android:src="@drawable/facebook_login_button"
+        		android:text="Login to Facebook!"
         		android:layout_marginTop="30dip"
         		android:layout_gravity="center_horizontal"
-        		android:text="Login with Facebook"/>
+        		/>
    
     
-    <!-- Facebook Post to Wall Button -->
-    <Button android:id="@+id/btn_fb_post_to_wall"
+    <!-- Facebook Log Out Button -->
+    <Button android:id="@+id/btn_fb_logout"
         		android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
-        		android:text="Post to Wall"
+        		android:text="Log Out"
         		android:layout_marginTop="30dip"
         		android:layout_gravity="center_horizontal"
-        		android:visibility="gone"/>
+        		/>
     <!-- Facebook Logout Button -->
     <Button android:id="@+id/btn_get_profile"
         		android:layout_width="wrap_content"
@@ -41,7 +41,14 @@
         		android:layout_marginTop="30dip"
         		android:layout_gravity="center_horizontal"
         		android:visibility="gone"/>
-    
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dip"
+        android:layout_gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </LinearLayout>
 

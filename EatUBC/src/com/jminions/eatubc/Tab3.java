@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Tab3 extends Fragment {
-	
+
 	static StringBuilder strb = new StringBuilder("");
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	//Button btnFbGetProfile;
@@ -34,16 +34,16 @@ public class Tab3 extends Fragment {
 	public AsyncFacebookRunner mAsyncRunner;
 	private static String APP_ID = "636751449730696"; // Replace with your App ID
 	private Facebook facebook = new Facebook(APP_ID);
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		final LinearLayout order_tab = new LinearLayout(getActivity());
 		order_tab.setOrientation(LinearLayout.VERTICAL);
-		
+
 		final LinearLayout price_tab = new LinearLayout(getActivity());
 		price_tab.setOrientation(LinearLayout.VERTICAL);
-		
+
 		int indexi = 0;
 		int indexj = 0;
 
@@ -63,7 +63,7 @@ public class Tab3 extends Fragment {
 			}
 			indexi = 0;
 		}
-		
+
 		final TextView price = new TextView(getActivity());
 		//price.setText("Thank You " + FacebookLogin.Name + "\n---------------------------------------" + "\n");
 		price.setText("Thank You " + FacebookLogin.Name + "\n---------------------------------------" + "\n" + 
@@ -90,28 +90,28 @@ public class Tab3 extends Fragment {
 
             }
          });
-		
-		
+
+
 	    Button btnPlace = new Button(getActivity());
 	    btnPlace.setText("Place Order"); 
 	    order_tab.addView(btnPlace);
-	    
+
 	    final Button btnPostToWall = new Button(getActivity());
 	    order_tab.addView(btnPostToWall);
 	    btnPostToWall.setVisibility(View.INVISIBLE);
-	    
+
 	    btnPlace.setOnClickListener(new Button.OnClickListener() {
 	    	public void onClick(View v)
 	    	{
 	    		 //Intent intent = new Intent(getActivity(), FacebookActions.class);
-	    		
+
 	    		 //String message = strb.toString();
-	    		
+
 	    		 //intent.putExtra(EXTRA_MESSAGE, message);
 	    		 //startActivity(intent);
 	    		 	btnPostToWall.setVisibility(View.VISIBLE);
 	    			btnPostToWall.setText("Post Your Order on Facebook!");
-	    			
+
 	    			btnPostToWall.setOnClickListener( new Button.OnClickListener() {
 	    				@Override
 	    				public void onClick(View v) {
@@ -119,16 +119,16 @@ public class Tab3 extends Fragment {
 	    				}
 	    			}
 	    			);
-	    			
+
 	    	}
 	    });
-	    
-	    
-	    
+
+
+
 		return order_tab;
-	
+
 }
-		
+
 	public void postToWall(final String message) {
 		facebook.dialog(getActivity(), "feed", new DialogListener() {
 
@@ -151,10 +151,10 @@ public class Tab3 extends Fragment {
 			}
 		});
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 
 }

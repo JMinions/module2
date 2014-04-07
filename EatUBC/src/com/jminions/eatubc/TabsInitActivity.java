@@ -17,14 +17,14 @@ import android.widget.EditText;
 
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
-	
+
 	public static int amountOrdered[][]={{0,0,0},{0,0,0}};
-	
+
 	public static double arrChildPrice[][] = {
 		{ 4.75, 5.50, 5.50 }, 
 		{1.50, 1.50, 1.50},
 	};
-	
+
 	public static String arrGroupElements[] = { "Food", "Drink" };
 	/**
 	 * strings for child elements
@@ -38,14 +38,14 @@ public class TabsInitActivity extends FragmentActivity implements
 				"Rootbeer Can \n $1.50" }, };
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	public static int[] order = new int[20];
-	
+
 	private ViewPager viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
-	
+
 	//Facebook implementation
 	private Fragment mainFragment;
-	
+
 	// Tab titles
 	private String[] tabs = { "Menu", "Special", "Place Order" };
 	public static EditText[][] menu;
@@ -56,7 +56,7 @@ public class TabsInitActivity extends FragmentActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs_init);
-		
+
 		if (savedInstanceState == null) {
 	        // Add the fragment on initial activity setup
 	        mainFragment = new Fragment();
@@ -69,7 +69,7 @@ public class TabsInitActivity extends FragmentActivity implements
 	        mainFragment = (Fragment) getSupportFragmentManager()
 	        .findFragmentById(android.R.id.content);
 	    }
-		
+
 		// Show the Up button in the action bar.
 		setupActionBar();
 		// Initialization
@@ -86,7 +86,7 @@ public class TabsInitActivity extends FragmentActivity implements
 			actionBar.addTab(actionBar.newTab().setText(tab_name)
 					.setTabListener(this));
 		}
-		
+
 		/**
 		 * on swiping the viewpager make respective tab selected
 		 * */
@@ -107,7 +107,7 @@ public class TabsInitActivity extends FragmentActivity implements
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-			
+
 
 	}
 
@@ -163,5 +163,5 @@ public class TabsInitActivity extends FragmentActivity implements
 		Intent Food_Menu_Activity = new Intent(this, FoodMenuActivity.class);
 		startActivity(Food_Menu_Activity);
 	} */
-	
+
 }

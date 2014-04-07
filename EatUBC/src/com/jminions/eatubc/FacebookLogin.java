@@ -21,13 +21,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
+
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +41,9 @@ public class FacebookLogin extends Activity{
 
 	static StringBuilder strb = new StringBuilder("");
 	
+
 	public Facebook facebook = new Facebook(APP_ID);
+
 	private AsyncFacebookRunner mAsyncRunner;
 	String FILENAME = "AndroidSSO_data";
 	private SharedPreferences mPrefs;
@@ -59,16 +61,9 @@ public class FacebookLogin extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.facebook_login);
 
-		btnFbLogin = (Button) findViewById(R.id.btn_fblogin);
+
 		ImgFbLogin = (ImageView) findViewById(R.id.fblogin);
 		mAsyncRunner = new AsyncFacebookRunner(facebook);
-		WelcomeString = (TextView) findViewById(R.id.textView1);
-		btnFbLogOut = (Button) findViewById(R.id.btn_fb_logout);
-		
-		//getProfileInformation();
-		
-		
-		//WelcomeString.setText("Name: " + Name + "\n" + "Email: " + Email);
 		
 		/**
 		 * Login button Click event
@@ -86,9 +81,9 @@ public class FacebookLogin extends Activity{
 
 	}
 
-	/**
-	 * Function to login or out to facebook
-	 * */
+	/**                       
+	 * Function to login or out to facebook          
+	 * */      
 	@SuppressWarnings("deprecation")
 		public void LogInOrOutToFacebook() {
 		
@@ -136,7 +131,7 @@ public class FacebookLogin extends Activity{
 
 							@Override
 							public void onFacebookError(FacebookError fberror) {
-								// Function to handle Facebook errors
+								
 
 							}
 						}
@@ -149,17 +144,21 @@ public class FacebookLogin extends Activity{
 				}
 			}
 			else {
-				try {
+				Intent intent = new Intent (this, RestaurantList.class);
+				startActivity(intent);
+				/*try {
+					
 					facebook.logout(getApplicationContext());
+					
 					Toast.makeText(FacebookLogin.this, "isSessionValid in logout", Toast.LENGTH_SHORT).show();
-					ImgFbLogin.setImageResource(R.drawable.facebook_login_button);
+					//ImgFbLogin.setImageResource(R.drawable.facebook_login_button);
 				} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 			}
 		
 		
@@ -179,7 +178,6 @@ public class FacebookLogin extends Activity{
 	 * */
 	@SuppressWarnings("deprecation")
 	public void getProfileInformation() {
-		ImgFbLogin.setImageResource(R.drawable.facebook_logout_button);
 		Intent intent = new Intent (this, RestaurantList.class);
 		startActivity(intent);
 		mAsyncRunner.request("me", new RequestListener() {
@@ -234,31 +232,6 @@ public class FacebookLogin extends Activity{
 		});
 	}
 
-	/**
-	 * Function to post to facebook wall
-	 * */
-	@SuppressWarnings("deprecation")
-	public void postToWall() {
-		// post on user's wall.
-		facebook.dialog(this, "feed", new DialogListener() {
-
-			@Override
-			public void onFacebookError(FacebookError e) {
-			}
-
-			@Override
-			public void onError(DialogError e) {
-			}
-
-			@Override
-			public void onComplete(Bundle values) {
-			}
-
-			@Override
-			public void onCancel() {
-			}
-		});
-
-	}
+	
 	
 }

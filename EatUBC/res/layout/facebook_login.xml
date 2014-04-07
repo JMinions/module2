@@ -13,52 +13,6 @@
     android:src="@drawable/facebook_login_button"
     android:layout_marginTop="30dip"
     />
-    
-    <!-- Facebook Login Button -->
-    <Button android:id="@+id/btn_fblogin"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:text="Login to Facebook!"
-        		android:layout_marginTop="30dip"
-        		android:layout_gravity="center_horizontal"
-        		android:visibility="gone"
-        		/>
-   
-    
-    <!-- Facebook Log Out Button -->
-    <Button android:id="@+id/btn_fb_logout"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:text="Log Out"
-        		android:layout_marginTop="30dip"
-        		android:layout_gravity="center_horizontal"
-        		/>
-    <!-- Facebook Logout Button -->
-    <Button android:id="@+id/btn_get_profile"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:src="@drawable/ic_food"
-        		android:text="Get Profile Data"
-        		android:layout_marginTop="30dip"
-        		android:layout_gravity="center_horizontal"
-        		android:visibility="gone"/>
-    
-    <!-- Button to show access tokens -->
-    <Button android:id="@+id/btn_show_access_tokens"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:text="Show Access Tokens"
-        		android:layout_marginTop="30dip"
-        		android:layout_gravity="center_horizontal"
-        		android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dip"
-        android:layout_gravity="center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </LinearLayout>
 

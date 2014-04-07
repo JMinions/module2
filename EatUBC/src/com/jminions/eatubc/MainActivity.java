@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,7 +17,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +53,7 @@ public class MainActivity extends Activity {
       attempts.setText(Integer.toString(counter));
       login = (Button)findViewById(R.id.button1);
       newaccount = (Button)findViewById(R.id.textView6);
+      
       newaccount.setOnClickListener(new OnClickListener() {
     	  
     	  public void onClick(View view){
@@ -113,7 +114,9 @@ public class MainActivity extends Activity {
 		register = new PopupWindow(layout, 500, 500, true); 
 		register.showAtLocation(layout, Gravity.CENTER, 0, 0);
 		register.setFocusable(true);
-
+		register.setBackgroundDrawable(new BitmapDrawable());
+		register.setOutsideTouchable(true);
+		register.showAsDropDown(newaccount,0,0);
 		} catch (Exception e) { 
 		e.printStackTrace(); 
 		}	   
@@ -124,7 +127,9 @@ public class MainActivity extends Activity {
 			 Toast.makeText(getApplicationContext(), "That Username is already in use",
 				      Toast.LENGTH_SHORT).show();
 			register.dismiss();
-		}
+		}else if(user.getText().toString() == "null"){
+			register.dismiss();
+	   }
 		accounts.put(user.getText().toString(),pass.getText().toString());
 		register.dismiss();
 	   }

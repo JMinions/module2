@@ -27,10 +27,17 @@ public class Tab3 extends Fragment {
 		
 		final LinearLayout price_tab = new LinearLayout(getActivity());
 		price_tab.setOrientation(LinearLayout.VERTICAL);
+		
 		TextView orderName = new TextView(getActivity());
-		orderName.setText("Order For: " + MainActivity.Name + "\n");
-		strb.append(MainActivity.Name + "\n");
+		if (!(MainActivity.Name.equals(null))) {
+			orderName.setText("Order For: " + MainActivity.Name + "\n");
+		} else {
+			orderName.setText("Order For: " + MainActivity.username.getText().toString() + "\n");
+		}
+		//orderName.setText("Order For: " + MainActivity.Name + "\n");
+		strb.append("ID:" + MainActivity.Name + "\n");
 		price_tab.addView(orderName);
+		
 		int indexi = 0;
 		int indexj = 0;
 
@@ -55,7 +62,8 @@ public class Tab3 extends Fragment {
 		}
 		
 		final TextView price = new TextView(getActivity());
-		price.setText("Total Price: $" + String.valueOf(TabsInitActivity.Price
+		price.setText("Thank You \n-----------------------------------" + "\n" + 
+					"Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n-----------------------------------"));
 		strb.append("Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n"));

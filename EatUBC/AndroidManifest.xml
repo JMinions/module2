@@ -92,10 +92,10 @@
         <activity
             android:name="com.jminions.eatubc.FoodMenuActivity"
             android:label="@string/title_activity_food_menu"
-            android:parentActivityName="com.jminions.eatubc.TabInitActivity" >
+            android:parentActivityName="com.jminions.eatubc.RestaurantList" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.jminions.eatubc.TabInitActivity" />
+                android:value="com.jminions.eatubc.RestaurantList" />
         </activity>
         <activity
             android:name="com.jminions.eatubc.DrinkMenuActivity"

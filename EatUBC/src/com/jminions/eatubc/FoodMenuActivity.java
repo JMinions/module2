@@ -134,13 +134,13 @@ public class FoodMenuActivity extends Activity {
 		String addr = "";
 		EditText text_ip;
 		text_ip = (EditText) findViewById(R.id.ip1);
-		addr += "128";//text_ip.getText().toString();
+		addr += text_ip.getText().toString();
 		text_ip = (EditText) findViewById(R.id.ip2);
-		addr += "." + "189";//text_ip.getText().toString();
+		addr += "." + text_ip.getText().toString();
 		text_ip = (EditText) findViewById(R.id.ip3);
-		addr += "." + "222";//text_ip.getText().toString();
+		addr += "." + text_ip.getText().toString();
 		text_ip = (EditText) findViewById(R.id.ip4);
-		addr += "." + "74";//text_ip.getText().toString();
+		addr += "." + text_ip.getText().toString();
 		return addr;
 	}
 

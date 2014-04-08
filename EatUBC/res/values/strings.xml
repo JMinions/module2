@@ -48,6 +48,8 @@
 
 
     <string name="title_activity_map">MapActivity</string>
+    
+    <string name="cancel">Cancel</string>
 
 
 </resources>

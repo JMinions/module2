@@ -249,7 +249,7 @@ public class MainActivity extends Activity {
 				}
 			}
 			else {
-				Intent intent = new Intent (this, RestaurantList.class);
+				Intent intent = new Intent (this, MainMenu.class);
 				startActivity(intent);
 				/*try {
 					
@@ -283,7 +283,7 @@ public class MainActivity extends Activity {
 	 * */
 	@SuppressWarnings("deprecation")
 	public void getProfileInformation() {
-		Intent intent = new Intent (this, RestaurantList.class);
+		Intent intent = new Intent (this, MainMenu.class);
 		startActivity(intent);
 		mAsyncRunner.request("me", new RequestListener() {
 			@Override
@@ -335,6 +335,10 @@ public class MainActivity extends Activity {
 			public void onFacebookError(FacebookError e, Object state) {
 			}
 		});
+	}
+	
+	public void cancel(View view){
+		register.dismiss();
 	}
 
 }

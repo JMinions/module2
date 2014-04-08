@@ -41,10 +41,7 @@ public class Tab3 extends Fragment {
 
 		final LinearLayout price_tab = new LinearLayout(getActivity());
 		price_tab.setOrientation(LinearLayout.VERTICAL);
-
-		strb.append( "\n---------------------------------------");
-
-
+		
 		TextView orderName = new TextView(getActivity());
 		orderName.setText("Order For: " + MainActivity.Name + "\n");
 		strb.append(MainActivity.Name + "\n");
@@ -73,7 +70,7 @@ public class Tab3 extends Fragment {
 		}
 
 		final TextView price = new TextView(getActivity());
-		price.setText("Thank You \n---------------------------------------" + "\n" + 
+		price.setText("Thank You \n-----------------------------------" + "\n" + 
 		"Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n-----------------------------------"));
 		strb.append("Total Price: $" + String.valueOf(TabsInitActivity.Price
@@ -110,28 +107,29 @@ public class Tab3 extends Fragment {
 	    btnPlace.setText("Place Order"); 
 	    order_tab.addView(btnPlace);
 
-	    final Button btnPostToWall = new Button(getActivity());
-	    order_tab.addView(btnPostToWall);
-	    btnPostToWall.setVisibility(View.INVISIBLE);
+	    //final Button btnPostToWall = new Button(getActivity());
+	    //order_tab.addView(btnPostToWall);
+	    //btnPostToWall.setVisibility(View.INVISIBLE);
 
 	    btnPlace.setOnClickListener(new Button.OnClickListener() {
 	    	public void onClick(View v)
 	    	{
-	    		 	btnPostToWall.setVisibility(View.VISIBLE);
-	    			btnPostToWall.setText("Post on Facebook!");
+	    		 	//btnPostToWall.setVisibility(View.VISIBLE);
+	    			//btnPostToWall.setText("Post on Facebook!");
 	    			
 	    			Intent intent = new Intent(getActivity(), FoodMenuActivity.class);
-	    			startActivity(intent);
+	    			
 	    			String message = strb.toString();
 	    			intent.putExtra(EXTRA_MESSAGE, message);
-	    			
+	    			startActivity(intent);
+	    			/*
 	    			btnPostToWall.setOnClickListener( new Button.OnClickListener() {
 	    				@Override
 	    				public void onClick(View v) {
 	    					postToWall("abcdefg test");
 	    				}
 	    			}
-	    			);
+	    			);*/
 
 	    	}
 	    });
@@ -140,7 +138,7 @@ public class Tab3 extends Fragment {
 		return order_tab;
 
 }
-
+/*
 	public void postToWall(final String message) {
 		facebook.dialog(getActivity(), "feed", new DialogListener() {
 
@@ -161,5 +159,5 @@ public class Tab3 extends Fragment {
 			public void onCancel() {
 			}
 		});
-	}
+	}*/
 }

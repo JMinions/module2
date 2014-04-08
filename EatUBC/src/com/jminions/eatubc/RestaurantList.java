@@ -176,13 +176,13 @@ public class RestaurantList extends Activity {
 		String addr = "";
 		EditText text_ip;
 		text_ip = (EditText) findViewById(R.id.ip1);
-		addr += "192"; //text_ip.getText().toString();
+		addr += "128"; //text_ip.getText().toString();
 		text_ip = (EditText) findViewById(R.id.ip2);
-		addr += "." + "168"; //text_ip.getText().toString();
+		addr += "." + "189"; //text_ip.getText().toString();
 		text_ip = (EditText) findViewById(R.id.ip3);
-		addr += "." + "1"; //text_ip.getText().toString();
+		addr += "." + "222"; //text_ip.getText().toString();
 		text_ip = (EditText) findViewById(R.id.ip4);
-		addr += "." + "141"; //text_ip.getText().toString();
+		addr += "." + "74"; //text_ip.getText().toString();
 		return addr;
 	}
 

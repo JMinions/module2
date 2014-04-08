@@ -62,11 +62,30 @@ public class TabsInitActivity extends FragmentActivity implements
 		
 		List<String> burgerBarItems = Arrays.asList(burgerBar.split("\\s*,\\s*"));
 		
-		/*int count = 0;
-		for( int i = 0; i <= 1; i++ ) {
-			for (int j = 0; j <= 2; j++){
-				arrChildElements[i][j] = burgerBarItems.get(count) + "\n $" + burgerBarItems.get(++count);
+		int count = 0;
+		int i = 0,j = 0;
+		boolean row = true;
+		boolean col = false;
+
+		/*while (row) {
+			if (burgerBarItems.get(count).equals("?")) {
+				row = false;
+			} else {
+				col = true;
+				while (col) {
+					if (burgerBarItems.get(count).equals("!")) {
+						col = false;
+						j = 0;
+					} else {
+						arrChildElements[i][j] = burgerBarItems.get(count)
+								+ "\n $" + burgerBarItems.get(++count);
+						arrChildPrice[i][j] = Double.parseDouble(burgerBarItems.get(count));
+						count++;
+						j++;
+					}
+				}
 				count++;
+				i++;
 			}
 		}*/
 		

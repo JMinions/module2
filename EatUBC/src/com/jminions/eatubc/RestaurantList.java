@@ -18,23 +18,17 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class RestaurantList extends Activity {
 
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	
-
 	String username = MainActivity.username.getText().toString();
-
-	public static int RestaurantNumber = 1;
-
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// This call will result in better error messages if you
 		// try to do things in the wrong thread.
-		
+
 		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
 				.detectDiskReads().detectDiskWrites().detectNetwork()
 				.penaltyLog().build());
@@ -58,8 +52,8 @@ public class RestaurantList extends Activity {
 		TCPReadTimerTask tcp_task = new TCPReadTimerTask();
 		Timer tcp_timer = new Timer();
 		tcp_timer.schedule(tcp_task, 3000, 500);
-
-
+		
+			
 
 	}
 
@@ -69,25 +63,26 @@ public class RestaurantList extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
-	public void McDonaldsClick(View view) {
-		Intent intent = new Intent(this, TabsInitActivity.class);
-		RestaurantNumber = 2;
-		EditText menuItems = (EditText) findViewById(R.id.RecvdMessage);
-		String McDonalds = menuItems.getText().toString();
-		System.out.println("TEST2" + McDonalds);
-		intent.putExtra(EXTRA_MESSAGE, McDonalds);
-		startActivity(intent);
-	}
 
 	public void PitPubClick(View view) {
-
+		//View v = new View(RestaurantList.this);  
+		//openSocket(view);
+		//sendMessage(view);
+		/*try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		//PitPubClick2(view); 
+		
+		//sendMessage(view);
+		//temp(view);
+		//sendMessage(view);
 		
 		Intent Tabs_Init_Activity = new Intent(this, TabsInitActivity.class);
-		RestaurantNumber = 1;
 		EditText menuItems = (EditText) findViewById(R.id.RecvdMessage);
 		String burgerBar = menuItems.getText().toString();
-
 		System.out.println("TEST1 " + burgerBar);
 		
 		Tabs_Init_Activity.putExtra(EXTRA_MESSAGE, burgerBar);
@@ -104,7 +99,10 @@ public class RestaurantList extends Activity {
 		startActivity(Tabs_Init_Activity);
 	}
 	
-
+	public void mcdonaldsClick(View view){
+		openSocket(view);
+	}
+	
 	// Route called when the user presses "connect"
 
 	public void openSocket(View view) {
@@ -123,7 +121,7 @@ public class RestaurantList extends Activity {
 		// and executes the code in it.
 
 		new SocketConnect().execute((Void) null);
-
+		
 	}
 
 	// Called when the user wants to send a message
@@ -132,11 +130,11 @@ public class RestaurantList extends Activity {
 		MyApplication app = (MyApplication) getApplication();
 
 		// Get the message from the box
-
-
+		
+		
 		EditText et = (EditText) findViewById(R.id.MessageText);
 		String msg = et.getText().toString();
-
+		
 		// Create an array of bytes. First byte will be the
 		// message length, and the next ones will be the message
 
@@ -240,12 +238,12 @@ public class RestaurantList extends Activity {
 	// on Timer Tasks before trying to understand this code.
 	public class TCPReadTimerTask extends TimerTask {
 		public void run() {
-
+			
 			MyApplication app = (MyApplication) getApplication();
-
+			
 			if (app.sock != null && app.sock.isConnected()
 					&& !app.sock.isClosed()) {
-
+			
 				try {
 					InputStream in = app.sock.getInputStream();
 
@@ -254,7 +252,7 @@ public class RestaurantList extends Activity {
 					int bytes_avail = in.available();
 					if (bytes_avail > 0) {
 
-						// If so, read them in and create a string
+						// If so, read them in and create a sring
 
 						byte buf[] = new byte[bytes_avail];
 						in.read(buf);

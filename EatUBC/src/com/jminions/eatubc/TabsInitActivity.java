@@ -9,6 +9,7 @@ import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
@@ -20,13 +21,13 @@ import android.widget.Toast;
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 
-	
-	//Default Initialization: PitPub
+
+
 
 
 	public static int amountOrdered[][]={{0,0,0,0,0},{0,0,0,0,0}};
 	
-	public static  double arrChildPrice[][] = {
+	public static final double arrChildPrice[][] = {
 		{ 4.75, 5.50, 5.50, 3.00, 4.50}, 
 		{1.50, 1.50, 1.50, 1.50, 1.50},
 
@@ -45,70 +46,32 @@ public class TabsInitActivity extends FragmentActivity implements
 				},
 			{ 	"Mountain Dew Can \n $1.50", 
 				"Pepsi Can \n $1.50", 
-
 				"Rootbeer Can \n $1.50",
 				"Bottle Water \n $1.50",
 				"Orange Juice \n $1.50",
 				}, };
-
-			
-
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	public static int[] order = new int[20];
 
 	private ViewPager viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
+
+	//Facebook implementation
+	private Fragment mainFragment;
+
 	// Tab titles
-	public String[] tabs = { "Menu", "Special", "Place Order" };
+	private String[] tabs = { "Menu", "Special", "Place Order" };
 	public static EditText[][] menu;
 
 	protected static double Price = 0.00;
-
+	
 	@SuppressLint("NewApi")
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs_init);
 		
-		//if PitPuub is chosen
-		if (RestaurantList.RestaurantNumber == 1){
-			Price = 0.00;
-			tabs = new String[]{ "Menu", "Special", "Place Order" };
-			arrChildPrice = new double[][] {
-					{ 4.75, 5.50, 5.50 }, 
-					{1.50, 1.50, 1.50},
-				};
-			arrGroupElements = new String[] { "Food", "Drink" };
-			arrChildElements = new String[][]{
-					{ 	"Wednesday Special - Hamburger and fries \n $4.75", 
-						"Hamburger Deluxe \n $5.50",
-						"Cheeseburger Deluxe \n $5.50" },
-					{ 	"Mountain Dew Can \n $1.50", 
-						"Pepsi Can \n $1.50", 
-						"Rootbeer Can \n $1.50" }, };
-		}
-		//if McDonalds is Chosen
-		else if (RestaurantList.RestaurantNumber == 2){
-			Price = 0.00;
-			tabs = new String[] {"Value Meals", "Special", "Place Order" };
-			
-			amountOrdered = new int[][] {{0,0,0},{0,0,0}};
-			arrGroupElements = new String[] {"Value Meals", "Sides"};
-			arrChildElements = new String[][] { 	
-					{"Big Mac Combo \n BigMac, Fries, and Drink. $8.99", 
-					"Double Big Mac Combo \n Double BigMac, Fries, and Drink. $9.99",
-					"QuarterPounder Combo \n QuarterPounder, Fries, and Drink. $7.99" },
-				{ 	"Hash Brown \n $1.59", 
-					"Chicken McWrap \n $1.39", 
-					"Poutine \n $3.99" }, };
-			arrChildPrice = new double[][] {
-					{ 8.99, 9.99, 7.99 }, 
-					{1.59, 1.39, 3.99},
-				};
-		}
-		
-
 		Intent intent = getIntent();
 		String burgerBar = intent.getStringExtra(RestaurantList.EXTRA_MESSAGE);
 		System.out.println("TEST2 "+ burgerBar);
@@ -138,17 +101,17 @@ public class TabsInitActivity extends FragmentActivity implements
 							count++;
 							j++;
 						}
-
-		System.out.println("TEST"+ burgerBar);
-
-
-
+					}
+					count++;
+					i++;
+				}
+			}
 		}
-
-
+		
+		
 		// Show the Up button in the action bar.
 		setupActionBar();
-		// Initilization
+		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
@@ -166,7 +129,7 @@ public class TabsInitActivity extends FragmentActivity implements
 		/**
 		 * on swiping the viewpager make respective tab selected
 		 * */
-		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
 			@Override
 			public void onPageSelected(int position) {
@@ -183,8 +146,8 @@ public class TabsInitActivity extends FragmentActivity implements
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-				}}}
-				
+
+
 	}
 
 	@Override

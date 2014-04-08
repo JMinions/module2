@@ -38,7 +38,7 @@ public class RestaurantList extends Activity {
 
 		EditText et = (EditText) findViewById(R.id.RecvdMessage);
 		et.setKeyListener(null);
-		et.setVisibility(View.INVISIBLE);
+		//et.setVisibility(View.INVISIBLE);
 		et = (EditText) findViewById(R.id.error_message_box);
 		et.setKeyListener(null);
 		et.setVisibility(View.INVISIBLE);
@@ -66,6 +66,7 @@ public class RestaurantList extends Activity {
 
 	public void PitPubClick(View view) {
 		//View v = new View(RestaurantList.this);  
+		//openSocket(view);
 		//sendMessage(view);
 		/*try {
 			TimeUnit.SECONDS.sleep(5);
@@ -76,15 +77,30 @@ public class RestaurantList extends Activity {
 		//PitPubClick2(view); 
 		
 		//sendMessage(view);
-		
+		//temp(view);
 		//sendMessage(view);
+		
 		Intent Tabs_Init_Activity = new Intent(this, TabsInitActivity.class);
 		EditText menuItems = (EditText) findViewById(R.id.RecvdMessage);
 		String burgerBar = menuItems.getText().toString();
-		System.out.println("TEST1" + burgerBar);
+		System.out.println("TEST1 " + burgerBar);
 		
 		Tabs_Init_Activity.putExtra(EXTRA_MESSAGE, burgerBar);
 		startActivity(Tabs_Init_Activity);
+	}
+	public void temp(View view){
+		sendMessage(view);
+		Intent Tabs_Init_Activity = new Intent(this, TabsInitActivity.class);
+		//EditText menuItems = (EditText) findViewById(R.id.RecvdMessage);
+		//String burgerBar = menuItems.getText().toString();
+		//System.out.println("TEST1" + burgerBar);
+		
+		Tabs_Init_Activity.putExtra(EXTRA_MESSAGE, "Hello");
+		startActivity(Tabs_Init_Activity);
+	}
+	
+	public void mcdonaldsClick(View view){
+		openSocket(view);
 	}
 	
 	// Route called when the user presses "connect"

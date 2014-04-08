@@ -41,8 +41,10 @@ public class FoodMenuActivity extends Activity {
 
 		EditText et = (EditText) findViewById(R.id.RecvdMessage);
 		et.setKeyListener(null);
+		et.setVisibility(View.INVISIBLE);
 		et = (EditText) findViewById(R.id.error_message_box);
 		et.setKeyListener(null);
+		et.setVisibility(View.INVISIBLE);
 
 		// Set up a timer task.  We will use the timer to check the
 		// input queue every 500 ms
@@ -132,24 +134,24 @@ public class FoodMenuActivity extends Activity {
 		String addr = "";
 		EditText text_ip;
 		text_ip = (EditText) findViewById(R.id.ip1);
-		addr += text_ip.getText().toString();
+		addr += "192";//text_ip.getText().toString();
 		text_ip = (EditText) findViewById(R.id.ip2);
-		addr += "." + text_ip.getText().toString();
+		addr += "." + "168";//text_ip.getText().toString();
 		text_ip = (EditText) findViewById(R.id.ip3);
-		addr += "." + text_ip.getText().toString();
+		addr += "." + "1";//text_ip.getText().toString();
 		text_ip = (EditText) findViewById(R.id.ip4);
-		addr += "." + text_ip.getText().toString();
+		addr += "." + "141";//text_ip.getText().toString();
 		return addr;
 	}
 
 	// Gets the Port from the appropriate field.
 
 	public Integer getConnectToPort() {
-		Integer port;
-		EditText text_port;
+		Integer port = 50002;
+		//EditText text_port;
 
-		text_port = (EditText) findViewById(R.id.port);
-		port = Integer.parseInt(text_port.getText().toString());
+		//text_port = (EditText) findViewById(R.id.port);
+		//port = Integer.parseInt(text_port.getText().toString());
 
 		return port;
 	}

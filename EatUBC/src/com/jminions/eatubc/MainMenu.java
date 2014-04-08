@@ -18,9 +18,6 @@ public class MainMenu extends Activity{
 
 	EditText order_line_1, order_line_2, order_line_3, order_line_4;
 
-
-
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,4 +39,6 @@ public class MainMenu extends Activity{
 
 	}
 
+
 }
+

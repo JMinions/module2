@@ -8,13 +8,19 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
     
+<<<<<<< HEAD
 	<uses-permission android:name="android.permission.INTERNET"/>
 	
+=======
+    <uses-permission android:name="android.permission.INTERNET" />
+
+>>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_fastfood"
         android:label="@string/app_name"
-        android:theme="@style/MyCustomTheme" >
+        android:theme="@style/MyCustomTheme" 
+        android:name=".MyApplication" >>
         <activity
             android:name="com.jminions.eatubc.MainActivity"
             android:label="@string/app_name" >
@@ -25,9 +31,18 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.jminions.eatubc.MainMenu"
+            android:label="@string/app_name"
+            android:parentActivityName= "com.jminions.eatubc.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jminions.eatubc.MainActivity" />
+         </activity>
+         
+        <activity
             android:name="com.jminions.eatubc.DisplayOrderActivity"
             android:label="@string/title_activity_display_order"
-            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />
@@ -43,15 +58,15 @@
         <activity
             android:name="com.jminions.eatubc.RestaurantList"
             android:label="@string/title_restaurant_list"
-            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.jminions.eatubc.MainActivity" />
+                android:value="com.jminions.eatubc.MainMenu" />
         </activity>
         <activity
             android:name="com.jminions.eatubc.Tab1"
             android:label="@string/title_activity_tab1"
-            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />
@@ -59,7 +74,7 @@
         <activity
             android:name="com.jminions.eatubc.Tab2"
             android:label="@string/title_activity_tab2"
-            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />
@@ -67,7 +82,7 @@
         <activity
             android:name="com.jminions.eatubc.Tab3"
             android:label="@string/title_activity_tab3"
-            android:parentActivityName="com.jminions.eatubc.MainActivity" >
+            android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />

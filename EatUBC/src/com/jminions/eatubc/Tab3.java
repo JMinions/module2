@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 @SuppressWarnings("deprecation")
 public class Tab3 extends Fragment {
+<<<<<<< HEAD
 
 	static StringBuilder strb = new StringBuilder("");
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
@@ -31,6 +32,11 @@ public class Tab3 extends Fragment {
 	private static String APP_ID = "636751449730696"; // Replace with your App ID
 	private Facebook facebook = new Facebook(APP_ID);
 
+=======
+	
+	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
+	StringBuilder strb = new StringBuilder("");
+>>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -49,8 +55,11 @@ public class Tab3 extends Fragment {
 					TextView temp = new TextView(getActivity());
 					TextView amount = new TextView(getActivity());
 					temp.setText(TabsInitActivity.arrChildElements[indexi][indexj]);
+					strb.append(TabsInitActivity.arrChildElements[indexi][indexj]+"\n");
 					amount.setText("Amount:" + TabsInitActivity.amountOrdered[indexi][indexj]
 							+ "\n-----------------------------------");
+					strb.append("Amount:" + TabsInitActivity.amountOrdered[indexi][indexj]
+							+ "\n-----------------------------------\n");
 					price_tab.addView(temp);
 					price_tab.addView(amount);
 					temp.setWidth(100);
@@ -65,15 +74,20 @@ public class Tab3 extends Fragment {
 		price.setText("Thank You " + FacebookLogin.Name + "\n---------------------------------------" + "\n" + 
 		"Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n-----------------------------------"));
+		strb.append("Total Price: $" + String.valueOf(TabsInitActivity.Price
+				+ "\n-----------------------------------\n"));
 		price_tab.addView(price);
 		price.setWidth(100);
 		order_tab.addView(price_tab);
+		
+		
 		Button btnCancel = new Button(getActivity()); 
 	    btnCancel.setText("Cancel Order"); 
 	    order_tab.addView(btnCancel); 
 	    btnCancel.setOnClickListener(new Button.OnClickListener() {  
         public void onClick(View v)
             {
+        	
         	for (int indexj = 0; indexj < 3; indexj++) {
     			for (int indexi = 0; indexi < 2; indexi++) {
     				TabsInitActivity.amountOrdered[indexi][indexj] = 0;
@@ -81,13 +95,17 @@ public class Tab3 extends Fragment {
         	}
         	TabsInitActivity.Price = 0.00;
         	order_tab.removeView(price_tab);
+<<<<<<< HEAD
         	//order_tab.removeAllViews();
+=======
+>>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b
         	order_tab.invalidate();
-
+        	strb.setLength(0);
             }
          });
 
 
+<<<<<<< HEAD
 	    Button btnPlace = new Button(getActivity());
 	    btnPlace.setText("Place Order"); 
 	    order_tab.addView(btnPlace);
@@ -119,6 +137,20 @@ public class Tab3 extends Fragment {
 	    	}
 	    });
 
+=======
+		Button btnPlace = new Button(getActivity()); 
+	    btnPlace.setText("Place Order"); 
+	    order_tab.addView(btnPlace); 
+	    btnPlace.setOnClickListener(new Button.OnClickListener() {  
+	        public void onClick(View v)
+	            {
+	        	Intent intent = new Intent(getActivity(), FoodMenuActivity.class);
+	        	String message = strb.toString();
+	        	intent.putExtra(EXTRA_MESSAGE, message);
+	        	startActivity(intent);
+	            }
+	         });
+>>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b
 
 
 		return order_tab;
@@ -147,10 +179,13 @@ public class Tab3 extends Fragment {
 			}
 		});
 	}
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+>>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b
 }

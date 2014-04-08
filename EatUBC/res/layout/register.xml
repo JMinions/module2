@@ -3,7 +3,7 @@
  android:id="@+id/popup_element" 
 android:layout_width="fill_parent" 
 android:layout_height="fill_parent" 
-android:background="#FFFFFF" 
+android:background="#CCCCCC" 
 android:orientation="vertical" 
 android:padding="10sp" >
 
@@ -45,5 +45,6 @@ android:padding="10sp" >
         android:layout_height="wrap_content"
         android:onClick="dismiss"
         android:text="@string/register" />
+
 
 </LinearLayout>

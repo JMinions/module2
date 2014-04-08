@@ -1,5 +1,8 @@
 package com.jminions.eatubc;
 
+import java.util.Arrays;
+import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -12,17 +15,22 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 
-	public static int amountOrdered[][]={{0,0,0},{0,0,0}};
 
-	public static double arrChildPrice[][] = {
-		{ 4.75, 5.50, 5.50 }, 
-		{1.50, 1.50, 1.50},
+
+
+
+	public static int amountOrdered[][]={{0,0,0,0,0},{0,0,0,0,0}};
+	
+	public static final double arrChildPrice[][] = {
+		{ 4.75, 5.50, 5.50, 3.00, 4.50}, 
+		{1.50, 1.50, 1.50, 1.50, 1.50},
+
 	};
 
 	public static String arrGroupElements[] = { "Food", "Drink" };
@@ -32,10 +40,16 @@ public class TabsInitActivity extends FragmentActivity implements
 	public static String arrChildElements[][] = {
 			{ 	"Wednesday Special - Hamburger and fries \n $4.75", 
 				"Hamburger Deluxe \n $5.50",
-				"Cheeseburger Deluxe \n $5.50" },
+				"Cheeseburger Deluxe \n $5.50",
+				"Fries \n $3.00",
+				"Poutine \n $4.50",
+				},
 			{ 	"Mountain Dew Can \n $1.50", 
 				"Pepsi Can \n $1.50", 
-				"Rootbeer Can \n $1.50" }, };
+				"Rootbeer Can \n $1.50",
+				"Bottle Water \n $1.50",
+				"Orange Juice \n $1.50",
+				}, };
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	public static int[] order = new int[20];
 
@@ -51,25 +65,50 @@ public class TabsInitActivity extends FragmentActivity implements
 	public static EditText[][] menu;
 
 	protected static double Price = 0.00;
+	
 	@SuppressLint("NewApi")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs_init);
+		
+		Intent intent = getIntent();
+		String burgerBar = intent.getStringExtra(RestaurantList.EXTRA_MESSAGE);
+		System.out.println("TEST2 "+ burgerBar);
+		if (!(burgerBar.equals(""))) {
+			List<String> burgerBarItems = Arrays.asList(burgerBar
+					.split("\\s*,\\s*"));
 
-		if (savedInstanceState == null) {
-	        // Add the fragment on initial activity setup
-	        mainFragment = new Fragment();
-	        getSupportFragmentManager()
-	        .beginTransaction()
-	        .add(android.R.id.content, mainFragment)
-	        .commit();
-	    } else {
-	        // Or set the fragment from restored state info
-	        mainFragment = (Fragment) getSupportFragmentManager()
-	        .findFragmentById(android.R.id.content);
-	    }
+			int count = 0;
+			int i = 0, j = 0;
+			boolean row = true;
+			boolean col = false;
 
+			while (row) {
+				if (burgerBarItems.get(count).equals("?")) {
+					row = false;
+				} else {
+					col = true;
+					while (col) {
+						if (burgerBarItems.get(count).equals("!")) {
+							col = false;
+							j = 0;
+						} else {
+							arrChildElements[i][j] = burgerBarItems.get(count)
+									+ "\n $" + burgerBarItems.get(++count);
+							arrChildPrice[i][j] = Double
+									.parseDouble(burgerBarItems.get(count));
+							count++;
+							j++;
+						}
+					}
+					count++;
+					i++;
+				}
+			}
+		}
+		
+		
 		// Show the Up button in the action bar.
 		setupActionBar();
 		// Initialization
@@ -155,8 +194,16 @@ public class TabsInitActivity extends FragmentActivity implements
 			//
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
+		case R.id.action_refresh:
+			finish();
+			startActivity(getIntent());
+	        Toast updatedToast = Toast.makeText(getApplicationContext(), "Menu Updated!", Toast.LENGTH_SHORT);
+	        updatedToast.show();
+	        return true;
+	    default:
+        	return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
+		//return super.onOptionsItemSelected(item);
 	}
 
 	/*public void foodMenu(View view){

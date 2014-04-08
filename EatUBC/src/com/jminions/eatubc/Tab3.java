@@ -41,15 +41,10 @@ public class Tab3 extends Fragment {
 
 		final LinearLayout price_tab = new LinearLayout(getActivity());
 		price_tab.setOrientation(LinearLayout.VERTICAL);
-<<<<<<< HEAD
 
 		strb.append( "\n---------------------------------------");
-		
-		int indexi = 0;
-		int indexj = 0;
-		
-		for (indexj = 0; indexj < 3; indexj++) {
-=======
+
+
 		TextView orderName = new TextView(getActivity());
 		orderName.setText("Order For: " + MainActivity.Name + "\n");
 		strb.append(MainActivity.Name + "\n");
@@ -58,7 +53,6 @@ public class Tab3 extends Fragment {
 		int indexj = 0;
 
 		for (indexj = 0; indexj < 5; indexj++) {
->>>>>>> vga-merge
 			for (indexi = 0; indexi < 2; indexi++) {
 				if (TabsInitActivity.amountOrdered[indexi][indexj] != 0) {
 					TextView temp = new TextView(getActivity());

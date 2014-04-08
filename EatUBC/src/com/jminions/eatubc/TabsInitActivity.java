@@ -20,21 +20,17 @@ import android.widget.Toast;
 
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
-<<<<<<< HEAD
 
-	public static int amountOrdered[][]={{0,0,0},{0,0,0}};
 
-	public static double arrChildPrice[][] = {
-		{ 4.75, 5.50, 5.50 }, 
-		{1.50, 1.50, 1.50},
-=======
-	
+
+
+
 	public static int amountOrdered[][]={{0,0,0,0,0},{0,0,0,0,0}};
 	
 	public static final double arrChildPrice[][] = {
 		{ 4.75, 5.50, 5.50, 3.00, 4.50}, 
 		{1.50, 1.50, 1.50, 1.50, 1.50},
->>>>>>> vga-merge
+
 	};
 
 	public static String arrGroupElements[] = { "Food", "Drink" };

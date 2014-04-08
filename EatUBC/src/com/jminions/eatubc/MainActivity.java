@@ -141,20 +141,7 @@ public class MainActivity extends Activity {
 		}
 
 	}
-	
-<<<<<<< HEAD
-	public void connectionClick(View view){
-		Intent connection = new Intent(this, FoodMenuActivity.class);
-		startActivity(connection);
-		}
-	
 
-
-
-
-=======
-	
->>>>>>> vga-merge
    @Override
    public boolean onCreateOptionsMenu(Menu menu) {
       // Inflate the menu; this adds items to the action bar if it is present.

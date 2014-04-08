@@ -20,11 +20,11 @@ import android.widget.Toast;
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 	
-	public static int amountOrdered[][]={{0,0,0},{0,0,0}};
+	public static int amountOrdered[][]={{0,0,0,0,0},{0,0,0,0,0}};
 	
 	public static final double arrChildPrice[][] = {
-		{ 4.75, 5.50, 5.50 }, 
-		{1.50, 1.50, 1.50},
+		{ 4.75, 5.50, 5.50, 3.00, 4.50}, 
+		{1.50, 1.50, 1.50, 1.50, 1.50},
 	};
 	
 	public static final String arrGroupElements[] = { "Food", "Drink" };
@@ -34,10 +34,16 @@ public class TabsInitActivity extends FragmentActivity implements
 	public static final String arrChildElements[][] = {
 			{ 	"Wednesday Special - Hamburger and fries \n $4.75", 
 				"Hamburger Deluxe \n $5.50",
-				"Cheeseburger Deluxe \n $5.50" },
+				"Cheeseburger Deluxe \n $5.50",
+				"Fries \n $3.00",
+				"Poutine \n $4.50",
+				},
 			{ 	"Mountain Dew Can \n $1.50", 
 				"Pepsi Can \n $1.50", 
-				"Rootbeer Can \n $1.50" }, };
+				"Rootbeer Can \n $1.50",
+				"Bottle Water \n $1.50",
+				"Orange Juice \n $1.50",
+				}, };
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	public static int[] order = new int[20];
 	
@@ -58,39 +64,40 @@ public class TabsInitActivity extends FragmentActivity implements
 		
 		Intent intent = getIntent();
 		String burgerBar = intent.getStringExtra(RestaurantList.EXTRA_MESSAGE);
-		System.out.println("TEST"+ burgerBar);
-		
-		List<String> burgerBarItems = Arrays.asList(burgerBar.split("\\s*,\\s*"));
-		
-		int count = 0;
-		int i = 0,j = 0;
-		boolean row = true;
-		boolean col = false;
+		System.out.println("TEST2 "+ burgerBar);
+		if (!(burgerBar.equals(""))) {
+			List<String> burgerBarItems = Arrays.asList(burgerBar
+					.split("\\s*,\\s*"));
 
-		/*while (row) {
-			if (burgerBarItems.get(count).equals("?")) {
-				row = false;
-			} else {
-				col = true;
-				while (col) {
-					if (burgerBarItems.get(count).equals("!")) {
-						col = false;
-						j = 0;
-					} else {
-						arrChildElements[i][j] = burgerBarItems.get(count)
-								+ "\n $" + burgerBarItems.get(++count);
-						arrChildPrice[i][j] = Double.parseDouble(burgerBarItems.get(count));
-						count++;
-						j++;
+			int count = 0;
+			int i = 0, j = 0;
+			boolean row = true;
+			boolean col = false;
+
+			while (row) {
+				if (burgerBarItems.get(count).equals("?")) {
+					row = false;
+				} else {
+					col = true;
+					while (col) {
+						if (burgerBarItems.get(count).equals("!")) {
+							col = false;
+							j = 0;
+						} else {
+							arrChildElements[i][j] = burgerBarItems.get(count)
+									+ "\n $" + burgerBarItems.get(++count);
+							arrChildPrice[i][j] = Double
+									.parseDouble(burgerBarItems.get(count));
+							count++;
+							j++;
+						}
 					}
+					count++;
+					i++;
 				}
-				count++;
-				i++;
 			}
-		}*/
+		}
 		
-		//arrChildElements[0][0] = burgerBarItems.get(0) + "\n $" + burgerBarItems.get(1);
-		//System.out.println(burgerBarItems.get(0));
 		
 		// Show the Up button in the action bar.
 		setupActionBar();

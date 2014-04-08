@@ -79,7 +79,8 @@ public class Tab1 extends Fragment {
 					builder.setMessage(TabsInitActivity.arrChildElements[groupp][childp]);
 					
 					LayoutInflater inflater = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				    View layout_spinners = inflater.inflate(R.layout.spinner,null);
+				    
+					View layout_spinners = inflater.inflate(R.layout.spinner,null);
 				    Spinner spinner = (Spinner) layout_spinners.findViewById(R.id.spinner01);
 				    layout_spinners.setBackgroundColor(777);
 				    ArrayList<Integer> numlist = new ArrayList<Integer>();
@@ -102,7 +103,7 @@ public class Tab1 extends Fragment {
 			        });
 			        
 			        builder.setView(layout_spinners);
-				    builder.setPositiveButton("Confirm Order",
+				    builder.setPositiveButton("Confirm",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int id) {

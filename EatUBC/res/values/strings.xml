@@ -21,24 +21,22 @@
     <string name="title_section3">Section 3</string>
     <string name="title_activity_tab2">Tab2</string>
     <string name="title_activity_tab3">Tab3</string>
-   <string name="username">Username:</string>
-   <string name="password">Password:</string>
-   <string name="Login">Sign In</string>
-   <string name="attempts">Attempts Left:</string>
-    <string name ="newaccount">Sign Up</string>
-	<string name = "register">Register</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="Login">Sign In</string>
+    <string name="attempts">Attempts Left:</string>
+    <string name="newaccount">Sign Up</string>
+    <string name="register">Register</string>
     <string name="title_activity_tabs_init">Order Now</string>
     <string name="FoodOption">Food</string>
     <string name="DrinkOption">Drink</string>
-    <string name="title_activity_food_menu">FoodMenuActivity</string>
+    <string name="title_activity_food_menu">Send Order</string>
     <string name="title_activity_drink_menu">DrinkMenuActivity</string>
-
-  
     <string name="order_now_line">Order Now</string>
     <string name="order_history_line">Order History</string>
     <string name="restaurant1">Pit Pub Burger Bar</string>
     <string name="restaurant2">UBC Village McDonalds</string>
     <string name="title_restaurant_list">Restaurant List</string>
-
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>

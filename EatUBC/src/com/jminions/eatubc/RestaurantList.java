@@ -22,6 +22,7 @@ import android.widget.TextView;
 public class RestaurantList extends Activity {
 
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,13 @@ public class RestaurantList extends Activity {
 
 		EditText et = (EditText) findViewById(R.id.RecvdMessage);
 		et.setKeyListener(null);
+		et.setVisibility(View.INVISIBLE);
 		et = (EditText) findViewById(R.id.error_message_box);
 		et.setKeyListener(null);
+		et.setVisibility(View.INVISIBLE);
+		et = (EditText) findViewById(R.id.MessageText);
+		et.setKeyListener(null);
+		et.setVisibility(View.INVISIBLE);
 
 		// Set up a timer task. We will use the timer to check the
 		// input queue every 500 ms
@@ -47,6 +53,7 @@ public class RestaurantList extends Activity {
 		Timer tcp_timer = new Timer();
 		tcp_timer.schedule(tcp_task, 3000, 500);
 		
+			
 
 	}
 
@@ -75,14 +82,8 @@ public class RestaurantList extends Activity {
 		EditText menuItems = (EditText) findViewById(R.id.RecvdMessage);
 		String burgerBar = menuItems.getText().toString();
 		System.out.println("TEST1" + burgerBar);
-		//while(burgerBar == "") sendMessage(view);
+		
 		Tabs_Init_Activity.putExtra(EXTRA_MESSAGE, burgerBar);
-		try {
-			TimeUnit.SECONDS.sleep(5);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		startActivity(Tabs_Init_Activity);
 	}
 	
@@ -172,11 +173,11 @@ public class RestaurantList extends Activity {
 	// Gets the Port from the appropriate field.
 
 	public Integer getConnectToPort() {
-		Integer port;
-		EditText text_port;
+		Integer port = 50002;
+		/*EditText text_port;
 
 		text_port = (EditText) findViewById(R.id.port);
-		port = Integer.parseInt(text_port.getText().toString());
+		port = Integer.parseInt(text_port.getText().toString());*/
 
 		return port;
 	}
@@ -250,7 +251,7 @@ public class RestaurantList extends Activity {
 						runOnUiThread(new Runnable() {
 							public void run() {
 								EditText et = (EditText) findViewById(R.id.RecvdMessage);
-								et.setText(s);
+								et.setText(s);								
 							}
 						});
 

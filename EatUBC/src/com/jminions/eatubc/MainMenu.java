@@ -36,5 +36,9 @@ public class MainMenu extends Activity{
 		startActivity(intent);	 
 
 	}
+	public void connectionClick(View view){
+		Intent intent = new Intent(this,Map_location.class);
+		startActivity(intent);
+	}
 
 }

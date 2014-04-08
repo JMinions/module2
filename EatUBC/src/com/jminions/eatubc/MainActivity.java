@@ -122,27 +122,27 @@ public class MainActivity extends Activity {
 		});
    }
 
-   public void login(View view){
-      if(password.getText().toString().equals(accounts.get(username.getText().toString()))){
-    	  Toast.makeText(getApplicationContext(), "Redirecting...", 
-    			  Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(this, MainMenu.class);
-		startActivity(intent);	 
-      }	
-      else{
-      Toast.makeText(getApplicationContext(), "Wrong Credentials",
-      Toast.LENGTH_SHORT).show();
-      attempts.setBackgroundColor(Color.RED);	
-      counter--;
-      attempts.setText(Integer.toString(counter));
-      if(counter==0){
-         login.setEnabled(false);
-      }
-      }
-
+	public void login(View view) {
+		if (password.getText().toString()
+				.equals(accounts.get(username.getText().toString()))) {
+			Toast.makeText(getApplicationContext(), "Redirecting...",
+					Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent(this, MainMenu.class);
+			startActivity(intent);
+		} else {
+			Toast.makeText(getApplicationContext(), "Wrong Credentials",
+					Toast.LENGTH_SHORT).show();
+			attempts.setBackgroundColor(Color.RED);
+			counter--;
+			attempts.setText(Integer.toString(counter));
+			if (counter == 0) {
+				login.setEnabled(false);
+			}
+		}
 
 	}
 	
+<<<<<<< HEAD
 	public void connectionClick(View view){
 		Intent connection = new Intent(this, FoodMenuActivity.class);
 		startActivity(connection);
@@ -152,6 +152,9 @@ public class MainActivity extends Activity {
 
 
 
+=======
+	
+>>>>>>> vga-merge
    @Override
    public boolean onCreateOptionsMenu(Menu menu) {
       // Inflate the menu; this adds items to the action bar if it is present.

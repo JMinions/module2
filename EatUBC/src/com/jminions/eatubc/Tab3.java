@@ -41,6 +41,7 @@ public class Tab3 extends Fragment {
 
 		final LinearLayout price_tab = new LinearLayout(getActivity());
 		price_tab.setOrientation(LinearLayout.VERTICAL);
+<<<<<<< HEAD
 
 		strb.append( "\n---------------------------------------");
 		
@@ -48,16 +49,26 @@ public class Tab3 extends Fragment {
 		int indexj = 0;
 		
 		for (indexj = 0; indexj < 3; indexj++) {
+=======
+		TextView orderName = new TextView(getActivity());
+		orderName.setText("Order For: " + MainActivity.Name + "\n");
+		strb.append(MainActivity.Name + "\n");
+		price_tab.addView(orderName);
+		int indexi = 0;
+		int indexj = 0;
+
+		for (indexj = 0; indexj < 5; indexj++) {
+>>>>>>> vga-merge
 			for (indexi = 0; indexi < 2; indexi++) {
 				if (TabsInitActivity.amountOrdered[indexi][indexj] != 0) {
 					TextView temp = new TextView(getActivity());
 					TextView amount = new TextView(getActivity());
 					temp.setText(TabsInitActivity.arrChildElements[indexi][indexj]);
 					strb.append(TabsInitActivity.arrChildElements[indexi][indexj]+"\n");
-					amount.setText("Amount:" + TabsInitActivity.amountOrdered[indexi][indexj]
+					amount.setText("Amount: " + TabsInitActivity.amountOrdered[indexi][indexj]
 							+ "\n-----------------------------------");
 					strb.append("Amount:" + TabsInitActivity.amountOrdered[indexi][indexj]
-							+ "\n-----------------------------------\n");
+							+ "\n");
 					price_tab.addView(temp);
 					price_tab.addView(amount);
 					temp.setWidth(100);
@@ -72,7 +83,7 @@ public class Tab3 extends Fragment {
 		"Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n-----------------------------------"));
 		strb.append("Total Price: $" + String.valueOf(TabsInitActivity.Price
-				+ "\n-----------------------------------\n"));
+				+ "\n"));
 		price_tab.addView(price);
 		price.setWidth(100);
 		order_tab.addView(price_tab);
@@ -85,7 +96,7 @@ public class Tab3 extends Fragment {
         public void onClick(View v)
             {
         	
-        	for (int indexj = 0; indexj < 3; indexj++) {
+        	for (int indexj = 0; indexj < 5; indexj++) {
     			for (int indexi = 0; indexi < 2; indexi++) {
     				TabsInitActivity.amountOrdered[indexi][indexj] = 0;
     			}

@@ -24,16 +24,12 @@ public class RestaurantList extends Activity {
 
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	
-<<<<<<< HEAD
+
 	String username = MainActivity.username.getText().toString();
-=======
-	//default value
-	//1: PitPub
-	//2: McDonalds
+
 	public static int RestaurantNumber = 1;
 
 
->>>>>>> origin/McDonaldsMenu
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// This call will result in better error messages if you
@@ -85,30 +81,13 @@ public class RestaurantList extends Activity {
 	}
 
 	public void PitPubClick(View view) {
-		//View v = new View(RestaurantList.this);  
-		//openSocket(view);
-		//sendMessage(view);
-		/*try {
-			TimeUnit.SECONDS.sleep(5);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		//PitPubClick2(view); 
 
-		//sendMessage(view);
-<<<<<<< HEAD
-		//temp(view);
-=======
-
->>>>>>> origin/McDonaldsMenu
-		//sendMessage(view);
 		
 		Intent Tabs_Init_Activity = new Intent(this, TabsInitActivity.class);
 		RestaurantNumber = 1;
 		EditText menuItems = (EditText) findViewById(R.id.RecvdMessage);
 		String burgerBar = menuItems.getText().toString();
-<<<<<<< HEAD
+
 		System.out.println("TEST1 " + burgerBar);
 		
 		Tabs_Init_Activity.putExtra(EXTRA_MESSAGE, burgerBar);
@@ -125,18 +104,7 @@ public class RestaurantList extends Activity {
 		startActivity(Tabs_Init_Activity);
 	}
 	
-	public void mcdonaldsClick(View view){
-		openSocket(view);
-	}
-	
-=======
-		System.out.println("TEST1" + burgerBar);
 
-		Tabs_Init_Activity.putExtra(EXTRA_MESSAGE, burgerBar);
-		startActivity(Tabs_Init_Activity);
-	}
-
->>>>>>> origin/McDonaldsMenu
 	// Route called when the user presses "connect"
 
 	public void openSocket(View view) {

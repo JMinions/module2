@@ -38,9 +38,4 @@
             android:text="@string/order_history_line" />
     
 
-<<<<<<< HEAD
-
 </LinearLayout>
-=======
-</LinearLayout>
->>>>>>> origin/McDonaldsMenu

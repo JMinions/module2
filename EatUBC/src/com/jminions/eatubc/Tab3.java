@@ -10,14 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Tab3 extends Fragment {
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> origin/McDonaldsMenu
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	StringBuilder strb = new StringBuilder("");
 	@Override
@@ -34,16 +29,8 @@ public class Tab3 extends Fragment {
 		price_tab.addView(orderName);
 		int indexi = 0;
 		int indexj = 0;
-<<<<<<< HEAD
 
 		for (indexj = 0; indexj < 5; indexj++) {
-=======
-		//Jerry: Added Code    
-		 strb.append("Customer Name: " + MainActivity.Name + "\n");
-		 ////////////////
-		
-		for (indexj = 0; indexj < 3; indexj++) {
->>>>>>> origin/McDonaldsMenu
 			for (indexi = 0; indexi < 2; indexi++) {
 				if (TabsInitActivity.amountOrdered[indexi][indexj] != 0) {
 					TextView temp = new TextView(getActivity());
@@ -64,23 +51,15 @@ public class Tab3 extends Fragment {
 		}
 		
 		final TextView price = new TextView(getActivity());
-<<<<<<< HEAD
 		price.setText("Total Price: $" + String.valueOf(TabsInitActivity.Price
-=======
-		//Added: Jerry
-		Toast.makeText(getActivity(), "Name: " + MainActivity.Name , Toast.LENGTH_LONG).show();
-		price.setText("Thank You " + MainActivity.Name + "!\n" + 
-					"Total Price: $" + String.valueOf(TabsInitActivity.Price
->>>>>>> origin/McDonaldsMenu
 				+ "\n-----------------------------------"));
-		////////////////////
 		strb.append("Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n"));
 		price_tab.addView(price);
 		price.setWidth(100);
 		order_tab.addView(price_tab);
-
-
+		
+		
 		Button btnCancel = new Button(getActivity()); 
 	    btnCancel.setText("Cancel Order"); 
 	    order_tab.addView(btnCancel); 

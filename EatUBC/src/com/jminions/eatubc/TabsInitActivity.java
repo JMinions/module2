@@ -19,20 +19,14 @@ import android.widget.Toast;
 
 public class TabsInitActivity extends FragmentActivity implements
 		ActionBar.TabListener {
-<<<<<<< HEAD
 
-=======
 	
 	//Default Initialization: PitPub
-	public static int amountOrdered[][]={{0,0,0},{0,0,0}};
->>>>>>> origin/McDonaldsMenu
-
-
 
 
 	public static int amountOrdered[][]={{0,0,0,0,0},{0,0,0,0,0}};
 	
-	public static final double arrChildPrice[][] = {
+	public static  double arrChildPrice[][] = {
 		{ 4.75, 5.50, 5.50, 3.00, 4.50}, 
 		{1.50, 1.50, 1.50, 1.50, 1.50},
 
@@ -51,16 +45,14 @@ public class TabsInitActivity extends FragmentActivity implements
 				},
 			{ 	"Mountain Dew Can \n $1.50", 
 				"Pepsi Can \n $1.50", 
-<<<<<<< HEAD
+
 				"Rootbeer Can \n $1.50",
 				"Bottle Water \n $1.50",
 				"Orange Juice \n $1.50",
 				}, };
-=======
-				"Rootbeer Can \n $1.50" }, };
-	
-	
->>>>>>> origin/McDonaldsMenu
+
+			
+
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	public static int[] order = new int[20];
 
@@ -119,7 +111,6 @@ public class TabsInitActivity extends FragmentActivity implements
 
 		Intent intent = getIntent();
 		String burgerBar = intent.getStringExtra(RestaurantList.EXTRA_MESSAGE);
-<<<<<<< HEAD
 		System.out.println("TEST2 "+ burgerBar);
 		if (!(burgerBar.equals(""))) {
 			List<String> burgerBarItems = Arrays.asList(burgerBar
@@ -147,48 +138,14 @@ public class TabsInitActivity extends FragmentActivity implements
 							count++;
 							j++;
 						}
-=======
+
 		System.out.println("TEST"+ burgerBar);
 
-		List<String> burgerBarItems = Arrays.asList(burgerBar.split("\\s*,\\s*"));
 
-		int count = 0;
-		int i = 0,j = 0;
-		boolean row = true;
-		boolean col = false;
 
-		/*while (row) {
-			if (burgerBarItems.get(count).equals("?")) {
-				row = false;
-			} else {
-				col = true;
-				while (col) {
-					if (burgerBarItems.get(count).equals("!")) {
-						col = false;
-						j = 0;
-					} else {
-						arrChildElements[i][j] = burgerBarItems.get(count)
-								+ "\n $" + burgerBarItems.get(++count);
-						arrChildPrice[i][j] = Double.parseDouble(burgerBarItems.get(count));
-						count++;
-						j++;
->>>>>>> origin/McDonaldsMenu
-					}
-					count++;
-					i++;
-				}
-			}
-<<<<<<< HEAD
 		}
-		
-		
-=======
-		}*/
 
-		//arrChildElements[0][0] = burgerBarItems.get(0) + "\n $" + burgerBarItems.get(1);
-		//System.out.println(burgerBarItems.get(0));
 
->>>>>>> origin/McDonaldsMenu
 		// Show the Up button in the action bar.
 		setupActionBar();
 		// Initilization
@@ -209,7 +166,7 @@ public class TabsInitActivity extends FragmentActivity implements
 		/**
 		 * on swiping the viewpager make respective tab selected
 		 * */
-		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
 
 			@Override
 			public void onPageSelected(int position) {
@@ -226,8 +183,8 @@ public class TabsInitActivity extends FragmentActivity implements
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-
-
+				}}}
+				
 	}
 
 	@Override

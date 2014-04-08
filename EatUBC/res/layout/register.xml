@@ -46,4 +46,5 @@ android:padding="10sp" >
         android:onClick="dismiss"
         android:text="@string/register" />
 
+
 </LinearLayout>

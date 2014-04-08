@@ -1,5 +1,7 @@
 package com.jminions.eatubc;
 
+import java.util.ArrayList;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,14 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class Tab1 extends Fragment {
 
-
+	
+	Integer select;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -66,20 +72,47 @@ public class Tab1 extends Fragment {
 					.setText(TabsInitActivity.arrChildElements[groupPosition][childPosition]);
 			Button button = (Button) convertView.findViewById(R.id.button1);
 			button.setOnClickListener(new OnClickListener() {
-
+				
 				public void onClick(View view) {
+		
 					AlertDialog.Builder builder = new AlertDialog.Builder(
 							myContext);
 					builder.setMessage(TabsInitActivity.arrChildElements[groupp][childp]);
-					builder.setPositiveButton("Confirm Order",
+					
+					LayoutInflater inflater = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				    View layout_spinners = inflater.inflate(R.layout.spinner,null);
+				    Spinner spinner = (Spinner) layout_spinners.findViewById(R.id.spinner01);
+				    layout_spinners.setBackgroundColor(777);
+				    ArrayList<Integer> numlist = new ArrayList<Integer>();
+				    for(int x = 0; x< 100; x++){
+				    numlist.add(x);
+				    }
+				    ArrayAdapter<Integer> adaptader= new ArrayAdapter<Integer>(myContext,android.R.layout.simple_spinner_item, numlist);
+			        adaptader.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+			        spinner.setAdapter(adaptader);
+			        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			            @Override
+			            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+			            	 select =(Integer) parent.getItemAtPosition(position);
+			            }
+
+			            @Override
+			            public void onNothingSelected(AdapterView<?> parent) {
+
+			            }
+			        });
+			        
+			        builder.setView(layout_spinners);
+				    builder.setPositiveButton("Confirm Order",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int id) {
-									TabsInitActivity.amountOrdered[groupp][childp] = TabsInitActivity.amountOrdered[groupp][childp] + 1;
-									TabsInitActivity.Price += TabsInitActivity.arrChildPrice[groupp][childp];
+									TabsInitActivity.amountOrdered[groupp][childp] = select;
+									TabsInitActivity.Price += TabsInitActivity.arrChildPrice[groupp][childp]*select;
 									notifyDataSetChanged();
 								}
 							});
+				    
 					builder.setNegativeButton("Back",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
@@ -92,8 +125,6 @@ public class Tab1 extends Fragment {
 
 				}
 			});
-			// TabsInitActivity.menu[groupPosition][childPosition] = (EditText)
-			// convertView.findViewById(R.id.editText1);
 			return convertView;
 		}
 

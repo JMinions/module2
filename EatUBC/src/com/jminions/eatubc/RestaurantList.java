@@ -23,6 +23,11 @@ public class RestaurantList extends Activity {
 
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	
+	//default value
+	//PitPub: 1
+	//McDonalds: 2
+	public static int RestaurantId = 1;
+	
 	String username = MainActivity.username.getText().toString();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +86,7 @@ public class RestaurantList extends Activity {
 		//sendMessage(view);
 		
 		Intent Tabs_Init_Activity = new Intent(this, TabsInitActivity.class);
+		RestaurantId = 1;
 		EditText menuItems = (EditText) findViewById(R.id.RecvdMessage);
 		String burgerBar = menuItems.getText().toString();
 		System.out.println("TEST1 " + burgerBar);
@@ -101,6 +107,13 @@ public class RestaurantList extends Activity {
 	
 	public void mcdonaldsClick(View view){
 		openSocket(view);
+		RestaurantId = 2;
+		Intent intent = new Intent(this, TabsInitActivity.class);
+		EditText menuItems = (EditText) findViewById(R.id.RecvdMessage);
+		String McDonalds = menuItems.getText().toString();
+		System.out.println("TEST2" + McDonalds);
+		intent.putExtra(EXTRA_MESSAGE, McDonalds);
+		startActivity(intent);
 	}
 	
 	// Route called when the user presses "connect"

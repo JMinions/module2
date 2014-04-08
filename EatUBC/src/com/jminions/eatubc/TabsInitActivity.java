@@ -24,10 +24,10 @@ public class TabsInitActivity extends FragmentActivity implements
 
 
 
-
+//default initialization: PitPub
 	public static int amountOrdered[][]={{0,0,0,0,0},{0,0,0,0,0}};
 	
-	public static final double arrChildPrice[][] = {
+	public static double arrChildPrice[][] = {
 		{ 4.75, 5.50, 5.50, 3.00, 4.50}, 
 		{1.50, 1.50, 1.50, 1.50, 1.50},
 
@@ -71,6 +71,8 @@ public class TabsInitActivity extends FragmentActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs_init);
+		
+		DetermineMenuItems();
 		
 		Intent intent = getIntent();
 		String burgerBar = intent.getStringExtra(RestaurantList.EXTRA_MESSAGE);
@@ -206,9 +208,51 @@ public class TabsInitActivity extends FragmentActivity implements
 		//return super.onOptionsItemSelected(item);
 	}
 
-	/*public void foodMenu(View view){
-		Intent Food_Menu_Activity = new Intent(this, FoodMenuActivity.class);
-		startActivity(Food_Menu_Activity);
-	} */
+	protected void DetermineMenuItems(){
+		//PitPub Menu
+		if (RestaurantList.RestaurantId == 1){
+			Price = 0.00;
+			tabs = new String[]{ "Menu", "Special", "Place Order" };
+			arrChildPrice = new double[][] {
+					{ 4.75, 5.50, 5.50, 3.00, 4.50 }, 
+					{1.50, 1.50, 1.50, 1.50, 1.50},
+				};
+			arrGroupElements = new String[] { "Food", "Drink" };
+			arrChildElements = new String[][]{
+					{ 	"Hamburger and fries \n $4.75", 
+						"Hamburger Deluxe \n $5.50",
+						"Cheeseburger Deluxe \n $5.50",
+						"Fries \n $3.00",
+						"Poutine \n $4.50"},
+					{ 	"Mountain Dew Can \n $1.50", 
+						"Pepsi Can \n $1.50", 
+						"Rootbeer Can \n $1.50",
+						"Bottle Water \n $1.50",
+						"Orange Juice \n $1.50"}, };
+		}
+		//if McDonalds is Chosen
+		else if (RestaurantList.RestaurantId == 2){
+			Price = 0.00;
+			tabs = new String[] {"Value Meals", "Special", "Place Order" };
+
+			amountOrdered = new int[][] {{0,0,0,0,0},{0,0,0,0,0}};
+			arrGroupElements = new String[] {"Value Meals", "Sides"};
+			arrChildElements = new String[][] { 	
+					{"Big Mac Combo \nBigMac, Fries, and Drink. $8.99", 
+					"Double Big Mac Combo \nDouble BigMac, Fries, and Drink. $9.99",
+					"QuarterPounder Combo \nQuarterPounder, Fries, and Drink. $7.99",
+					"Junior Chicken Combo \nJunior Chicken, Fries, and Drink. $7.99",
+					"McChicken Combo \nMcChicken, Fries, and Drink. $9.99"},
+				{ 	"Hash Brown \n$1.59", 
+					"Chicken McWrap \n$1.39", 
+					"Poutine \n$3.99",
+					"Garden Fresh Side Salad \n$2.49",
+					"Soft Baked Cookies \n$0.99"}, };
+			arrChildPrice = new double[][] {
+					{ 8.99, 9.99, 7.99 }, 
+					{1.59, 1.39, 3.99},
+				};
+		}
+	}
 
 }

@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 	static StringBuilder strb = new StringBuilder("");
 
 
-	public Facebook facebook = new Facebook(APP_ID);
+	public static Facebook facebook = new Facebook(APP_ID);
 
 	private AsyncFacebookRunner mAsyncRunner;
 	String FILENAME = "AndroidSSO_data";

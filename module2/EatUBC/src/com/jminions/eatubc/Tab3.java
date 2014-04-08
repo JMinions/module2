@@ -1,5 +1,9 @@
 package com.jminions.eatubc;
 
+import com.facebook.android.DialogError;
+import com.facebook.android.Facebook.DialogListener;
+import com.facebook.android.FacebookError;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -93,7 +97,46 @@ public class Tab3 extends Fragment {
 	            }
 	         });
 
+	    Button btnPostToWall = new Button(getActivity());
+	    btnPostToWall.setText("Post To Facebook!");
+	    order_tab.addView(btnPostToWall);
+	    
+	    btnPostToWall.setOnClickListener(new Button.OnClickListener(){
+	    	@Override
+	    	public void onClick(View v){
+	    		postToWall("abcdefg test");
+	    	}
+	    });
 
 		return order_tab;
+	}
+	
+	@SuppressWarnings("deprecation")
+	protected void postToWall(final String message){
+		MainActivity.facebook.dialog(getActivity(), "feed", new DialogListener(){
+			
+			@Override
+			public void onFacebookError(FacebookError e) {
+				
+			}
+			
+			@Override
+			public void onError(DialogError e) {
+				
+			}
+			
+			@Override
+			public void onComplete(Bundle values) {
+				values.putString("message", message);
+			}
+			
+			@Override
+			public void onCancel(){
+				
+			}
+			
+			
+			
+		});
 	}
 }

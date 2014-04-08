@@ -21,7 +21,10 @@ import android.widget.TextView;
 
 public class Tab1 extends Fragment {
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> origin/McDonaldsMenu
 	Integer select;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,13 +75,13 @@ public class Tab1 extends Fragment {
 					.setText(TabsInitActivity.arrChildElements[groupPosition][childPosition]);
 			Button button = (Button) convertView.findViewById(R.id.button1);
 			button.setOnClickListener(new OnClickListener() {
-				
+
 				public void onClick(View view) {
-		
+
 					AlertDialog.Builder builder = new AlertDialog.Builder(
 							myContext);
 					builder.setMessage(TabsInitActivity.arrChildElements[groupp][childp]);
-					
+
 					LayoutInflater inflater = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				    
 					View layout_spinners = inflater.inflate(R.layout.spinner,null);
@@ -102,7 +105,7 @@ public class Tab1 extends Fragment {
 
 			            }
 			        });
-			        
+
 			        builder.setView(layout_spinners);
 				    builder.setPositiveButton("Confirm",
 							new DialogInterface.OnClickListener() {
@@ -113,7 +116,7 @@ public class Tab1 extends Fragment {
 									notifyDataSetChanged();
 								}
 							});
-				    
+
 					builder.setNegativeButton("Back",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,

@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
+<<<<<<< HEAD
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,6 +18,11 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+=======
+    
+
+    <uses-permission android:name="android.permission.INTERNET" />
+>>>>>>> origin/McDonaldsMenu
     <application
         android:name="com.jminions.eatubc.MyApplication"
         android:allowBackup="true"
@@ -35,12 +41,19 @@
         </activity>
         <activity
             android:name="com.jminions.eatubc.MainMenu"
+<<<<<<< HEAD
             android:label="@string/app_name"
             android:parentActivityName="com.jminions.eatubc.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jminions.eatubc.MainActivity" />
         </activity>
+=======
+            android:label="@string/hello_world"
+            android:parentActivityName= "com.jminions.eatubc.MainActivity">
+         </activity>
+         
+>>>>>>> origin/McDonaldsMenu
         <activity
             android:name="com.jminions.eatubc.DisplayOrderActivity"
             android:label="@string/title_activity_display_order"
@@ -55,7 +68,7 @@
             android:parentActivityName="com.jminions.eatubc.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.jminions.eatubc.MainMenu" />
+                android:value="com.jminions.eatubc.MainActivity" />
         </activity>
         <activity
             android:name="com.jminions.eatubc.Tab1"

@@ -13,9 +13,20 @@ import android.widget.LinearLayout;
 
 public class MainMenu extends Activity{
 
+<<<<<<< HEAD
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 
 
+=======
+	//Intent intent = new Intent(this, DisplayOrderActivity.class);
+	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
+
+	EditText order_line_1, order_line_2, order_line_3, order_line_4;
+
+
+
+
+>>>>>>> origin/McDonaldsMenu
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,4 +52,8 @@ public class MainMenu extends Activity{
 		startActivity(intent);
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/McDonaldsMenu

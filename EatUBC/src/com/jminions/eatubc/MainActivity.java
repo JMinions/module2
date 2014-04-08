@@ -122,6 +122,7 @@ public class MainActivity extends Activity {
 		});
    }
 
+<<<<<<< HEAD
 	public void login(View view) {
 		if (password.getText().toString()
 				.equals(accounts.get(username.getText().toString()))) {
@@ -141,6 +142,37 @@ public class MainActivity extends Activity {
 		}
 
 	}
+=======
+   public void login(View view){
+      if(password.getText().toString().equals(accounts.get(username.getText().toString()))){
+    	  Toast.makeText(getApplicationContext(), "Redirecting...", 
+    			  Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(this, MainMenu.class);
+		startActivity(intent);	 
+      }	
+      else{
+      Toast.makeText(getApplicationContext(), "Wrong Credentials",
+      Toast.LENGTH_SHORT).show();
+      attempts.setBackgroundColor(Color.RED);	
+      counter--;
+      attempts.setText(Integer.toString(counter));
+      if(counter==0){
+         login.setEnabled(false);
+      }
+      }
+
+
+	}
+
+	public void connectionClick(View view){
+		Intent connection = new Intent(this, FoodMenuActivity.class);
+		startActivity(connection);
+		}
+
+   
+
+
+>>>>>>> origin/McDonaldsMenu
 
    @Override
    public boolean onCreateOptionsMenu(Menu menu) {
@@ -151,7 +183,7 @@ public class MainActivity extends Activity {
    PopupWindow register;
    public void initiatepopup(){
 	   try { 	
-	
+
 		// We need to get the instance of the LayoutInflater 
 		LayoutInflater inflater = (LayoutInflater) MainActivity.this 
 		.getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
@@ -182,7 +214,7 @@ public class MainActivity extends Activity {
 	   }
 	   catch(Exception e){
 		   System.out.println(e.toString());
-		   
+
 	   }
 	}
    
@@ -288,7 +320,7 @@ public class MainActivity extends Activity {
 		mAsyncRunner.request("me", new RequestListener() {
 			@Override
 			public void onComplete(String response, Object state) {
-				Log.d("Profile", response);
+				//Log.d("Profile", response);
 				String json = response;
 				try {
 					// Facebook Profile JSON data

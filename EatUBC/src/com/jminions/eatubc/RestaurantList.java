@@ -23,7 +23,7 @@ public class RestaurantList extends Activity {
 
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
 	
-
+	String username = MainActivity.username.getText().toString();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// This call will result in better error messages if you

@@ -42,7 +42,7 @@ public class Tab3 extends Fragment {
 		final LinearLayout price_tab = new LinearLayout(getActivity());
 		price_tab.setOrientation(LinearLayout.VERTICAL);
 
-		strb.append(FacebookLogin.Name + "\n---------------------------------------");
+		strb.append( "\n---------------------------------------");
 		
 		int indexi = 0;
 		int indexj = 0;
@@ -68,7 +68,7 @@ public class Tab3 extends Fragment {
 		}
 
 		final TextView price = new TextView(getActivity());
-		price.setText("Thank You " + FacebookLogin.Name + "\n---------------------------------------" + "\n" + 
+		price.setText("Thank You \n---------------------------------------" + "\n" + 
 		"Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n-----------------------------------"));
 		strb.append("Total Price: $" + String.valueOf(TabsInitActivity.Price

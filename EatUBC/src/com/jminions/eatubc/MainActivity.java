@@ -42,7 +42,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 
-   private EditText  username=null;
+   public static EditText  username=null;
    private EditText  password=null;
    private EditText  user;
    private EditText  pass;
@@ -148,11 +148,7 @@ public class MainActivity extends Activity {
 		startActivity(connection);
 		}
 	
-	public void OnOrderClick(View view) {
-		
-		Intent intent = new Intent(this, FacebookLogin.class);
-		startActivity(intent);	 
-	}
+
 
 
 

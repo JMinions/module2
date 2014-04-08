@@ -29,7 +29,6 @@ public class account {
 		return this.username;
 	}
 	
-
 	public account test(){
 		return this;
 	}

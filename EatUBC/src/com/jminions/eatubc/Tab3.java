@@ -9,6 +9,7 @@ import com.facebook.android.FacebookError;
 import com.facebook.android.Facebook.DialogListener;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -22,21 +23,16 @@ import android.widget.TextView;
 
 @SuppressWarnings("deprecation")
 public class Tab3 extends Fragment {
-<<<<<<< HEAD
 
-	static StringBuilder strb = new StringBuilder("");
-	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
-	//Button btnFbGetProfile;
-	//Button btnPostToWall;
 	public AsyncFacebookRunner mAsyncRunner;
 	private static String APP_ID = "636751449730696"; // Replace with your App ID
 	private Facebook facebook = new Facebook(APP_ID);
 
-=======
 	
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
+	
 	StringBuilder strb = new StringBuilder("");
->>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -46,9 +42,11 @@ public class Tab3 extends Fragment {
 		final LinearLayout price_tab = new LinearLayout(getActivity());
 		price_tab.setOrientation(LinearLayout.VERTICAL);
 
+		strb.append(FacebookLogin.Name + "\n---------------------------------------");
+		
 		int indexi = 0;
 		int indexj = 0;
-
+		
 		for (indexj = 0; indexj < 3; indexj++) {
 			for (indexi = 0; indexi < 2; indexi++) {
 				if (TabsInitActivity.amountOrdered[indexi][indexj] != 0) {
@@ -70,7 +68,6 @@ public class Tab3 extends Fragment {
 		}
 
 		final TextView price = new TextView(getActivity());
-		//price.setText("Thank You " + FacebookLogin.Name + "\n---------------------------------------" + "\n");
 		price.setText("Thank You " + FacebookLogin.Name + "\n---------------------------------------" + "\n" + 
 		"Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n-----------------------------------"));
@@ -95,17 +92,15 @@ public class Tab3 extends Fragment {
         	}
         	TabsInitActivity.Price = 0.00;
         	order_tab.removeView(price_tab);
-<<<<<<< HEAD
-        	//order_tab.removeAllViews();
-=======
->>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b
+
+
         	order_tab.invalidate();
         	strb.setLength(0);
             }
          });
 
 
-<<<<<<< HEAD
+
 	    Button btnPlace = new Button(getActivity());
 	    btnPlace.setText("Place Order"); 
 	    order_tab.addView(btnPlace);
@@ -117,15 +112,14 @@ public class Tab3 extends Fragment {
 	    btnPlace.setOnClickListener(new Button.OnClickListener() {
 	    	public void onClick(View v)
 	    	{
-	    		 //Intent intent = new Intent(getActivity(), FacebookActions.class);
-
-	    		 //String message = strb.toString();
-
-	    		 //intent.putExtra(EXTRA_MESSAGE, message);
-	    		 //startActivity(intent);
 	    		 	btnPostToWall.setVisibility(View.VISIBLE);
-	    			btnPostToWall.setText("Post Your Order on Facebook!");
-
+	    			btnPostToWall.setText("Post on Facebook!");
+	    			
+	    			Intent intent = new Intent(getActivity(), FoodMenuActivity.class);
+	    			startActivity(intent);
+	    			String message = strb.toString();
+	    			intent.putExtra(EXTRA_MESSAGE, message);
+	    			
 	    			btnPostToWall.setOnClickListener( new Button.OnClickListener() {
 	    				@Override
 	    				public void onClick(View v) {
@@ -136,21 +130,6 @@ public class Tab3 extends Fragment {
 
 	    	}
 	    });
-
-=======
-		Button btnPlace = new Button(getActivity()); 
-	    btnPlace.setText("Place Order"); 
-	    order_tab.addView(btnPlace); 
-	    btnPlace.setOnClickListener(new Button.OnClickListener() {  
-	        public void onClick(View v)
-	            {
-	        	Intent intent = new Intent(getActivity(), FoodMenuActivity.class);
-	        	String message = strb.toString();
-	        	intent.putExtra(EXTRA_MESSAGE, message);
-	        	startActivity(intent);
-	            }
-	         });
->>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b
 
 
 		return order_tab;
@@ -171,7 +150,6 @@ public class Tab3 extends Fragment {
 			@Override
 			public void onComplete(Bundle values) {
 				values.putString("message", message);
-				//mAsyncRunner.request("me/feed", values,"POST",new mRequestListener(),null);
 			}
 
 			@Override
@@ -179,13 +157,4 @@ public class Tab3 extends Fragment {
 			}
 		});
 	}
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
->>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b
 }

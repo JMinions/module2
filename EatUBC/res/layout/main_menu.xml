@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"
@@ -42,8 +38,5 @@
             android:text="@string/order_history_line" />
     
 
-<<<<<<< HEAD
+
 </LinearLayout>
-=======
-</LinearLayout>
->>>>>>> 7246848ab275eaecbee0e30452b12c6c7076469b

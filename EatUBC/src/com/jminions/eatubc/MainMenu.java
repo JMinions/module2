@@ -13,7 +13,12 @@ import android.widget.LinearLayout;
 
 public class MainMenu extends Activity{
 
+	//Intent intent = new Intent(this, DisplayOrderActivity.class);
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
+
+	EditText order_line_1, order_line_2, order_line_3, order_line_4;
+
+
 
 
 	@Override

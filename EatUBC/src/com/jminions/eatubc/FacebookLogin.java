@@ -190,11 +190,11 @@ public class FacebookLogin extends Activity{
 					JSONObject profile = new JSONObject(json);
 					
 					// getting name of the user
-					final String name = profile.getString("name");
+					String name = profile.getString("name");
 					Name = name;
 					
 					// getting email of the user
-					final String email = profile.getString("email");
+					String email = profile.getString("email");
 					Email = email;
 					
 					runOnUiThread(new Runnable() {

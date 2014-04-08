@@ -1,50 +1,28 @@
 package com.jminions.eatubc;
 
-
-
-import com.facebook.android.AsyncFacebookRunner;
-import com.facebook.android.DialogError;
-import com.facebook.android.Facebook;
-import com.facebook.android.FacebookError;
-import com.facebook.android.Facebook.DialogListener;
-
-
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.support.v4.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-@SuppressWarnings("deprecation")
 public class Tab3 extends Fragment {
-
-	public AsyncFacebookRunner mAsyncRunner;
-	private static String APP_ID = "636751449730696"; // Replace with your App ID
-	private Facebook facebook = new Facebook(APP_ID);
-
 	
 	public final static String EXTRA_MESSAGE = "com.jminions.eatubc.MESSAGE";
-	
 	StringBuilder strb = new StringBuilder("");
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		final LinearLayout order_tab = new LinearLayout(getActivity());
 		order_tab.setOrientation(LinearLayout.VERTICAL);
-
+		
 		final LinearLayout price_tab = new LinearLayout(getActivity());
 		price_tab.setOrientation(LinearLayout.VERTICAL);
-
-		strb.append( "\n---------------------------------------");
-
-
 		TextView orderName = new TextView(getActivity());
 		orderName.setText("Order For: " + MainActivity.Name + "\n");
 		strb.append(MainActivity.Name + "\n");
@@ -71,10 +49,9 @@ public class Tab3 extends Fragment {
 			}
 			indexi = 0;
 		}
-
+		
 		final TextView price = new TextView(getActivity());
-		price.setText("Thank You \n---------------------------------------" + "\n" + 
-		"Total Price: $" + String.valueOf(TabsInitActivity.Price
+		price.setText("Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n-----------------------------------"));
 		strb.append("Total Price: $" + String.valueOf(TabsInitActivity.Price
 				+ "\n"));
@@ -97,69 +74,26 @@ public class Tab3 extends Fragment {
         	}
         	TabsInitActivity.Price = 0.00;
         	order_tab.removeView(price_tab);
-
-
         	order_tab.invalidate();
         	strb.setLength(0);
             }
          });
 
 
-
-	    Button btnPlace = new Button(getActivity());
+		Button btnPlace = new Button(getActivity()); 
 	    btnPlace.setText("Place Order"); 
-	    order_tab.addView(btnPlace);
-
-	    final Button btnPostToWall = new Button(getActivity());
-	    order_tab.addView(btnPostToWall);
-	    btnPostToWall.setVisibility(View.INVISIBLE);
-
-	    btnPlace.setOnClickListener(new Button.OnClickListener() {
-	    	public void onClick(View v)
-	    	{
-	    		 	btnPostToWall.setVisibility(View.VISIBLE);
-	    			btnPostToWall.setText("Post on Facebook!");
-	    			
-	    			Intent intent = new Intent(getActivity(), FoodMenuActivity.class);
-	    			startActivity(intent);
-	    			String message = strb.toString();
-	    			intent.putExtra(EXTRA_MESSAGE, message);
-	    			
-	    			btnPostToWall.setOnClickListener( new Button.OnClickListener() {
-	    				@Override
-	    				public void onClick(View v) {
-	    					postToWall("abcdefg test");
-	    				}
-	    			}
-	    			);
-
-	    	}
-	    });
+	    order_tab.addView(btnPlace); 
+	    btnPlace.setOnClickListener(new Button.OnClickListener() {  
+	        public void onClick(View v)
+	            {
+	        	Intent intent = new Intent(getActivity(), FoodMenuActivity.class);
+	        	String message = strb.toString();
+	        	intent.putExtra(EXTRA_MESSAGE, message);
+	        	startActivity(intent);
+	            }
+	         });
 
 
 		return order_tab;
-
-}
-
-	public void postToWall(final String message) {
-		facebook.dialog(getActivity(), "feed", new DialogListener() {
-
-			@Override
-			public void onFacebookError(FacebookError e) {
-			}
-
-			@Override
-			public void onError(DialogError e) {
-			}
-
-			@Override
-			public void onComplete(Bundle values) {
-				values.putString("message", message);
-			}
-
-			@Override
-			public void onCancel() {
-			}
-		});
 	}
 }

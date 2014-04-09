@@ -29,12 +29,14 @@ public class Tab3 extends Fragment {
 		price_tab.setOrientation(LinearLayout.VERTICAL);
 		
 		TextView orderName = new TextView(getActivity());
-		if (!(MainActivity.Name.equals(null))) {
+		/*if (!(MainActivity.Name.equals(null))) {
 			orderName.setText("Order For: " + MainActivity.Name + "\n");
+			strb.append("ID:" + MainActivity.Name + "\n");
 		} else {
-			orderName.setText("Order For: " + MainActivity.username.getText().toString() + "\n");
-		}
-		//orderName.setText("Order For: " + MainActivity.Name + "\n");
+			orderName.setText("Order For: " + "User 1" + "\n");
+			strb.append("ID:" + "User 1" + "\n");
+		}*/
+		orderName.setText("Order For: " + MainActivity.Name + "\n");
 		strb.append("ID:" + MainActivity.Name + "\n");
 		price_tab.addView(orderName);
 		

@@ -50,39 +50,19 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Port" />
-
-        <EditText
-            android:id="@+id/port"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:inputType="number"
-            android:text="50002" />
-
-    </LinearLayout>
+  
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="openSocket"
-        android:text="Connect" />
+        android:text="Connect To Server" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="sendMessage"
-        android:text="Send Message" />
+        android:text="Send Order" />
 
     <Button
         android:layout_width="fill_parent"
@@ -107,11 +87,7 @@
         <requestFocus />
     </EditText>
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:text="Message Received:" />
+    
 
     <EditText
         android:id="@+id/RecvdMessage"
@@ -120,11 +96,7 @@
         android:ems="10"
         android:inputType="number" />
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:text="Errors:" />
+  
 
     <EditText
         android:id="@+id/error_message_box"

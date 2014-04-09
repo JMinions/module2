@@ -51,6 +51,7 @@ public class MainActivity extends Activity {
    private Button login;
    int counter = 3;
    
+   
   
    Map accounts = new HashMap();
    
@@ -123,6 +124,7 @@ public class MainActivity extends Activity {
    }
 
 	public void login(View view) {
+		Name = username.getText().toString();
 		if (password.getText().toString()
 				.equals(accounts.get(username.getText().toString()))) {
 			Toast.makeText(getApplicationContext(), "Redirecting...",

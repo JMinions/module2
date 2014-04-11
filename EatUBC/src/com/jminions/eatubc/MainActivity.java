@@ -290,7 +290,6 @@ public class MainActivity extends Activity {
 		mAsyncRunner.request("me", new RequestListener() {
 			@Override
 			public void onComplete(String response, Object state) {
-				Log.d("Profile", response);
 				String json = response;
 				try {
 					// Facebook Profile JSON data
